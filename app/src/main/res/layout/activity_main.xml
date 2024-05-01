@@ -14,7 +14,8 @@
         android:layout_height="1547dp"
         tools:layout_editor_absoluteX="-87dp"
         tools:layout_editor_absoluteY="-181dp"
-        tools:src="@drawable/hintergrund" />
+        tools:src="@drawable/hintergrund"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -22,7 +23,8 @@
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="0dp"
-        tools:src="@drawable/tamagotchi" />
+        tools:src="@drawable/tamagotchi"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -30,7 +32,8 @@
         android:layout_height="139dp"
         app:srcCompat="@drawable/star"
         tools:layout_editor_absoluteX="52dp"
-        tools:layout_editor_absoluteY="1105dp" />
+        tools:layout_editor_absoluteY="1105dp"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -38,7 +41,8 @@
         android:layout_height="126dp"
         app:srcCompat="@drawable/videospielkonsole"
         tools:layout_editor_absoluteX="307dp"
-        tools:layout_editor_absoluteY="1118dp" />
+        tools:layout_editor_absoluteY="1118dp"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -46,6 +50,7 @@
         android:layout_height="130dp"
         app:srcCompat="@drawable/shop"
         tools:layout_editor_absoluteX="636dp"
-        tools:layout_editor_absoluteY="1114dp" />
+        tools:layout_editor_absoluteY="1114dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
