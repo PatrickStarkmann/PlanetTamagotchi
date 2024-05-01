@@ -7,20 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="506dp"
-        android:layout_height="812dp"
-        app:srcCompat="@drawable/Hintergrund"
-        tools:layout_editor_absoluteX="-41dp"
-        tools:layout_editor_absoluteY="-49dp" />
-
-    <ImageView
-        android:id="@+id/imageView8"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/Tamagotchi"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:text="Hello World!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
