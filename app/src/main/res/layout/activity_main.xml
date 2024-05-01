@@ -7,13 +7,45 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="1037dp"
+        android:layout_height="1547dp"
+        tools:layout_editor_absoluteX="-87dp"
+        tools:layout_editor_absoluteY="-181dp"
+        tools:src="@drawable/hintergrund" />
+
+    <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:src="@drawable/tamagotchi" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="111dp"
+        android:layout_height="139dp"
+        app:srcCompat="@drawable/star"
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="1105dp" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="192dp"
+        android:layout_height="126dp"
+        app:srcCompat="@drawable/videospielkonsole"
+        tools:layout_editor_absoluteX="307dp"
+        tools:layout_editor_absoluteY="1118dp" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="148dp"
+        android:layout_height="130dp"
+        app:srcCompat="@drawable/shop"
+        tools:layout_editor_absoluteX="636dp"
+        tools:layout_editor_absoluteY="1114dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

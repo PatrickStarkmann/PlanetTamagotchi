@@ -10,12 +10,12 @@
               <deviceKey>
                 <Key>
                   <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\Patrick\.android\avd\TamagotchiTablet_API_30.avd" />
+                  <value value="$USER_HOME$/.android/avd/Tamagotchi_Tablet_API_30.avd" />
                 </Key>
               </deviceKey>
             </Target>
           </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-04-30T10:56:05.168891500Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-05-01T13:01:11.132730Z" />
         </State>
       </entry>
     </value>
