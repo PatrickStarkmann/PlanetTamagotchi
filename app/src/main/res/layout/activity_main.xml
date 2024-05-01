@@ -9,48 +9,78 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="1037dp"
-        android:layout_height="1547dp"
-        tools:layout_editor_absoluteX="-87dp"
-        tools:layout_editor_absoluteY="-181dp"
-        tools:src="@drawable/hintergrund"
-        tools:ignore="MissingConstraints" />
+        android:id="@+id/hintergrund"
+        android:layout_width="1008dp"
+        android:layout_height="1604dp"
+        android:layout_marginStart="-100dp"
+        android:layout_marginTop="-50dp"
+        android:layout_marginBottom="-100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/stern"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.642"
+        tools:ignore="MissingConstraints"
+        tools:src="@drawable/hintergrund" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/tamagotchi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:src="@drawable/tamagotchi"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginStart="63dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/hintergrund"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints"
+        tools:src="@drawable/tamagotchi" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/stern"
         android:layout_width="111dp"
         android:layout_height="139dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginEnd="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tamagotchi"
+        app:layout_constraintHorizontal_bias="0.217"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.971"
         app:srcCompat="@drawable/star"
-        tools:layout_editor_absoluteX="52dp"
-        tools:layout_editor_absoluteY="1105dp"
         tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/minigame"
         android:layout_width="192dp"
         android:layout_height="126dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/shop"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toEndOf="@+id/stern"
+        app:layout_constraintTop_toTopOf="@+id/tamagotchi"
+        app:layout_constraintVertical_bias="0.968"
         app:srcCompat="@drawable/videospielkonsole"
-        tools:layout_editor_absoluteX="307dp"
-        tools:layout_editor_absoluteY="1118dp"
         tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/shop"
         android:layout_width="148dp"
         android:layout_height="130dp"
+        android:layout_marginStart="774dp"
+        android:layout_marginTop="1322dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/hintergrund"
+        app:layout_constraintTop_toTopOf="@+id/hintergrund"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/shop"
-        tools:layout_editor_absoluteX="636dp"
-        tools:layout_editor_absoluteY="1114dp"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
