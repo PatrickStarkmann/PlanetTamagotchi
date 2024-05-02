@@ -22,5 +22,3 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-// HI, Ich bin Oli Anthony ist geil
-// NEIN DUUU von ANTHONY
