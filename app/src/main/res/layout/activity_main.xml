@@ -32,25 +32,24 @@
         android:id="@+id/stern"
         android:layout_width="79dp"
         android:layout_height="125dp"
-        android:background="@drawable/star"
+        app:srcCompat="@drawable/star"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="49dp"
-        tools:layout_editor_absoluteY="1123dp" />
+        tools:layout_editor_absoluteY="1155dp" />
 
     <ImageView
         android:id="@+id/minigame"
         android:layout_width="164dp"
         android:layout_height="103dp"
-        android:background="@drawable/videospielkonsole"
+        app:srcCompat="@drawable/videospielkonsole"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="308dp"
-        tools:layout_editor_absoluteY="1138dp" />
+        tools:layout_editor_absoluteX="456dp"
+        tools:layout_editor_absoluteY="1177dp" />
 
     <ImageView
         android:id="@+id/shop"
         android:layout_width="148dp"
         android:layout_height="130dp"
-        android:background="@drawable/shop"
+        app:srcCompat="@drawable/shop"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="620dp"
         tools:layout_editor_absoluteY="1118dp" />
