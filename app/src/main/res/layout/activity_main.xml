@@ -24,34 +24,49 @@
         android:id="@+id/tamagotchi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        android:background="@drawable/tamagotchi" />
+        android:background="@drawable/tamagotchi"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/stern"
         android:layout_width="79dp"
         android:layout_height="125dp"
+        android:layout_marginTop="1044dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tamagotchi"
         app:srcCompat="@drawable/star"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="1155dp" />
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/minigame"
         android:layout_width="164dp"
         android:layout_height="103dp"
+        android:layout_marginTop="1056dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tamagotchi"
         app:srcCompat="@drawable/videospielkonsole"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="456dp"
-        tools:layout_editor_absoluteY="1177dp" />
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/shop"
         android:layout_width="148dp"
         android:layout_height="130dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.917"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.963"
         app:srcCompat="@drawable/shop"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="620dp"
-        tools:layout_editor_absoluteY="1118dp" />
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
