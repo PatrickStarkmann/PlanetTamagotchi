@@ -1,5 +1,6 @@
 package com.example.planettamagotchi;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -7,8 +8,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import android.widget.ProgressBar;
 
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ProgressBar;
+import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private HealthBar healthBar;
@@ -26,5 +30,17 @@ public class MainActivity extends AppCompatActivity {
 
         progressBar = findViewById(R.id.progressBar);
         healthBar = new HealthBar(progressBar);
+
+        configureNextButton();
+    }
+    // ShopButton, Von Mainactivity zum Shop
+    private void configureNextButton() {
+        ImageButton shopButton = findViewById(R.id.shopButton);  // Button mit der ID buttonZuMain
+        shopButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick (View view){
+                startActivity(new Intent(MainActivity.this, Shop.class));
+            }
+        });
     }
 }
