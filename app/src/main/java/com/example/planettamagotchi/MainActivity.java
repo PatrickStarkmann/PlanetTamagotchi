@@ -1,19 +1,17 @@
 package com.example.planettamagotchi;
 
-import android.content.Context;
-import android.content.ContextParams;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 public class MainActivity extends AppCompatActivity {
-
+    private ProgressBar progressBar;
+    private HealthBar healthBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +24,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Stern im Hintergrund erstellen, vorläufig. RandomTimer zum einfügen folgt.
-        ImageView imageView = findViewById(R.id.hintergrund); // Finde die ImageView im Layout
-        Stern stern = new Stern(this, imageView); // Erstelle eine Instanz der Stern-Klasse und setze die Bitmap direkt in die ImageView
-
+        progressBar = findViewById(R.id.progressBar);
+        healthBar = new HealthBar(progressBar);
     }
-
 }
