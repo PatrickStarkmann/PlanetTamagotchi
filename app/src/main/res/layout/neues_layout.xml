@@ -2,33 +2,30 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/zaehler"
+    android:id="@+id/neu"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:visibility="visible"
-    tools:context=".MainActivity">android:id="@+id/hintergrund"
+    android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/hintergrund"
+        android:id="@+id/hintergrund_neu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/hintergrund_neu" />
 
-
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/tamagotchi"
+    <ImageView
+        android:id="@+id/tamagotchi_neu"
         android:layout_width="508dp"
         android:layout_height="496dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="355dp"
-        android:layout_marginEnd="152dp"
-        android:src="@drawable/tamagotchi_neu" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="148dp"
+        android:layout_marginEnd="144dp"
+        android:layout_marginBottom="436dp"
+        app:srcCompat="@drawable/tamagotchi_neu" />
 
     <ImageView
-        android:id="@+id/stern"
+        android:id="@+id/imageView4"
         android:layout_width="140dp"
         android:layout_height="135dp"
         android:layout_alignParentStart="true"
@@ -38,7 +35,7 @@
         app:srcCompat="@drawable/star" />
 
     <ImageView
-        android:id="@+id/minigame"
+        android:id="@+id/imageView5"
         android:layout_width="160dp"
         android:layout_height="163dp"
         android:layout_alignParentEnd="true"
@@ -48,7 +45,7 @@
         app:srcCompat="@drawable/videospielkonsole" />
 
     <ImageView
-        android:id="@+id/shop"
+        android:id="@+id/imageView6"
         android:layout_width="160dp"
         android:layout_height="156dp"
         android:layout_alignParentEnd="true"
@@ -57,14 +54,5 @@
         android:layout_marginBottom="39dp"
         app:srcCompat="@drawable/shop" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="427dp"
-        android:layout_height="126dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="181dp"
-        android:layout_marginTop="69dp" />
 
 </RelativeLayout>
