@@ -1,7 +1,7 @@
 package com.example.planettamagotchi;
 
 import android.os.Bundle;
-import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
     // private ProgressBar progressBar;
     private HealthBar healthBar;
-
+    private Klima klima;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,16 +23,21 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        // Hallo
-       // progressBar = findViewById(R.id.progressBar);
-       // healthBar = new HealthBar(progressBar);
+
+
+        // Stern im Hintergrund erstellen, VORLÄUFIG. RandomTimer zum einfügen folgt.
+        Stern stern = new Stern(this, findViewById(R.id.zaehler));
+        // Erstelle eine Instanz der Stern-Klasse,
+        // layout als parameter wird erst noch gesucht
+
+        // Healthbar von Anthony :
+        ProgressBar progressBar = findViewById(R.id.progressBar);
+        healthBar = new HealthBar(progressBar);
+        // Klimabar von Anthony:
+        ProgressBar progressBar2 = findViewById(R.id.progressBar2);
+        klima = new Klima(progressBar2);
 
        // configureNextButton();
-
-        ImageView tamagotchiImageView = findViewById(R.id.tamagotchi);
-        TamagotchiTouchListener touchListener = new TamagotchiTouchListener();
-        tamagotchiImageView.setOnTouchListener(touchListener);
-
     }
     // ShopButton, Von Mainactivity zum Shop
     /* Erstmal auskommentiert weil ein Fehler angezeigt wurde
