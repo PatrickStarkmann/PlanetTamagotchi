@@ -1,6 +1,7 @@
 package com.example.planettamagotchi;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import androidx.activity.EdgeToEdge;
@@ -38,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
         klima = new Klima(progressBar2);
 
        // configureNextButton();
+
+        ImageView tamagotchiImageView = findViewById(R.id.tamagotchi);
+        TamagotchiTouchListener touchListener = new TamagotchiTouchListener();
+        tamagotchiImageView.setOnTouchListener(touchListener);
     }
     // ShopButton, Von Mainactivity zum Shop
     /* Erstmal auskommentiert weil ein Fehler angezeigt wurde
