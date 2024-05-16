@@ -1,6 +1,7 @@
 package com.example.planettamagotchi;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,17 +23,16 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        // Stern im Hintergrund erstellen, VORLÄUFIG. RandomTimer zum einfügen folgt.
-        Stern stern = new Stern(this, findViewById(R.id.zaehler));
-        // Erstelle eine Instanz der Stern-Klasse,
-        // layout als parameter wird erst noch gesucht
-
-
+        // Hallo
        // progressBar = findViewById(R.id.progressBar);
        // healthBar = new HealthBar(progressBar);
 
        // configureNextButton();
+
+        ImageView tamagotchiImageView = findViewById(R.id.tamagotchi);
+        TamagotchiTouchListener touchListener = new TamagotchiTouchListener();
+        tamagotchiImageView.setOnTouchListener(touchListener);
+
     }
     // ShopButton, Von Mainactivity zum Shop
     /* Erstmal auskommentiert weil ein Fehler angezeigt wurde
