@@ -4,41 +4,34 @@ import android.widget.ProgressBar;
 
 public class HealthBar {
     private ProgressBar progressBar;
-    private int progressStatus = 100;
-    private Handler handler = new Handler();
-    private Runnable runnable;
+    private Handler handler;
+    private int progress = 100;
 
     public HealthBar(ProgressBar progressBar) {
         this.progressBar = progressBar;
-        initialize();
+        this.handler = new Handler();
+        updateProgress();
+        startDecreasing();
     }
 
-    private void initialize() {
-        // Starte den Timer, der alle 30 Sekunden die Lebensleiste aktualisiert
-        startTimer();
+    private void updateProgress() {
+        progressBar.setProgress(progress);
     }
 
-    private void startTimer() {
-        runnable = new Runnable() {
+    private void decreaseProgress() {
+        if (progress > 0) {
+            progress -= 5;
+            updateProgress();
+        }
+    }
+
+    private void startDecreasing() {
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                // Verringere den Fortschritt um 1%
-                progressStatus -= 30;
-
-                // Aktualisiere die Lebensleiste
-                progressBar.setProgress(progressStatus);
-
-                // Überprüfe, ob die Lebensleiste leer ist
-                if (progressStatus <= 0) {
-                    System.out.println("U DEAD");
-                } else {
-                    // Wenn die Lebensleiste noch nicht leer ist, führe den Timer erneut aus
-                    handler.postDelayed(this, 10000); // 30 Sekunden in Millisekunden
-                }
+                decreaseProgress();
+                handler.postDelayed(this, 10000); // Alle 5 Sekunden ausführen
             }
-        };
-
-        // Starte den Timer zum ersten Mal
-        handler.postDelayed(runnable, 30000); // 30 Sekunden in Millisekunden
+        }, 5000); // Erste Ausführung nach 5 Sekunden
     }
 }
