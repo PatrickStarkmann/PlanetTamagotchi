@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 public class TamagotchiTouchListener implements View.OnTouchListener {
     private int swipeCount = 0; // Variable zum Zählen der Swipe-Bewegungen

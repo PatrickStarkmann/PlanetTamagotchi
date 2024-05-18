@@ -8,7 +8,7 @@ public class HealthBar {
     private Handler handler;
     private int progress = 100;
 
-    private ImageView tamagotchiImageView;
+    private final ImageView tamagotchiImageView;
 
 
     public HealthBar(ProgressBar progressBar, ImageView tamagotchiImageView) {
