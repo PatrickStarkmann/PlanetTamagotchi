@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Healthbar von Anthony :
         ProgressBar progressBar = findViewById(R.id.progressBar);
-        healthBar = new HealthBar(progressBar);
+        healthBar = new HealthBar(progressBar, findViewById(R.id.tamagotchi));
         // Klimabar von Anthony:
         ProgressBar progressBar2 = findViewById(R.id.progressBar2);
         klima = new Klima(progressBar2);

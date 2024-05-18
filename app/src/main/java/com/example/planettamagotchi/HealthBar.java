@@ -1,5 +1,6 @@
 package com.example.planettamagotchi;
 import android.os.Handler;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 public class HealthBar {
@@ -7,9 +8,13 @@ public class HealthBar {
     private Handler handler;
     private int progress = 100;
 
-    public HealthBar(ProgressBar progressBar) {
+    private ImageView tamagotchiImageView;
+
+
+    public HealthBar(ProgressBar progressBar, ImageView tamagotchiImageView) {
         this.progressBar = progressBar;
         this.handler = new Handler();
+        this.tamagotchiImageView = tamagotchiImageView;
         updateProgress();
         startDecreasing();
     }
@@ -22,6 +27,9 @@ public class HealthBar {
         if (progress > 0) {
             progress -= 5;
             updateProgress();
+            if (progress < 30) {
+                tamagotchiImageView.setImageResource(R.drawable.krank);
+            }
         }
     }
 
@@ -34,4 +42,5 @@ public class HealthBar {
             }
         }, 5000); // Erste Ausführung nach 5 Sekunden
     }
+
 }

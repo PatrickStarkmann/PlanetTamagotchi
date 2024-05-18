@@ -1,6 +1,7 @@
 package com.example.planettamagotchi;
 
 import android.os.Handler;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import java.util.Random;
@@ -9,6 +10,8 @@ public class Klima {
     private ProgressBar progressBar2;
     private Handler handler;
     private int progress;
+
+
 
     public Klima(ProgressBar progressBar) {
         this.progressBar2 = progressBar;
@@ -48,4 +51,6 @@ public class Klima {
 
         updateProgress();
     }
+
+
 }
