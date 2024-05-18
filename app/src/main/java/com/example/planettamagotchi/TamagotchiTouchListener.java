@@ -1,11 +1,24 @@
 package com.example.planettamagotchi;
 
+
+import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 
 public class TamagotchiTouchListener implements View.OnTouchListener {
     private int swipeCount = 0; // Variable zum Zählen der Swipe-Bewegungen
     private float startX; // Startposition des Berührens
+    private final ImageView imageView; // Die ImageView, die das GIF anzeigt
+    private final int originalGif; // Originales GIF
+    private final int alternateGif; // Alternatives GIF
+    private final Handler handler = new Handler(); // Handler für die Verzögerung
+
+    public TamagotchiTouchListener(ImageView imageView, int originalGif, int alternateGif) {
+        this.imageView = imageView;
+        this.originalGif = originalGif;
+        this.alternateGif = alternateGif;
+    }
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
@@ -24,10 +37,24 @@ public class TamagotchiTouchListener implements View.OnTouchListener {
                     swipeCount++;
                     // Führe hier weitere Aktionen aus, die du im Zusammenhang mit dem Swipe durchführen möchtest
                     System.out.println("Es wurde geswiped yuhu" + "SwipeCount:" + swipeCount);
+                    changeGifTemporarily(); // ändert Tamagotchi
                 }
                 break;
         }
         return true;
+    }
+
+    private void changeGifTemporarily() {
+        // Ändern des GIFs
+        imageView.setImageResource(alternateGif);
+
+        // Setzen des GIFs nach einer Verzögerung wieder auf das originale GIF
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                imageView.setImageResource(originalGif);
+            }
+        }, 1000); // 1000 Millisekunden = 1 Sekunde Verzögerung
     }
 
     public int getSwipeCount() {

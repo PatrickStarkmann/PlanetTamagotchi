@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
        // configureNextButton();
 
         ImageView tamagotchiImageView = findViewById(R.id.tamagotchi);
-        TamagotchiTouchListener touchListener = new TamagotchiTouchListener();
+        TamagotchiTouchListener touchListener = new TamagotchiTouchListener(tamagotchiImageView, R.drawable.tamagotchi_neu, R.drawable.kitzeln);
         tamagotchiImageView.setOnTouchListener(touchListener);
     }
     // ShopButton, Von Mainactivity zum Shop
