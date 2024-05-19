@@ -3,6 +3,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +12,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class Shop extends AppCompatActivity {
-
+    private ImageView zuMainButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,15 +24,15 @@ public class Shop extends AppCompatActivity {
             return insets;
         });
 
-        // MainButon, Von Shop zur Mainactivity
-        ImageButton zuMainButton = findViewById(R.id.ZuMainButton);
-
+        // ZuMainButton ImageView
+        zuMainButton = findViewById(R.id.ZuMainButton);
         zuMainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Starte die MainActivity
                 Intent intent = new Intent(Shop.this, MainActivity.class);
                 startActivity(intent);
+                // Optional: Finish the current activity if you don't want to keep it in the back stack
+                finish();
             }
         });
     }

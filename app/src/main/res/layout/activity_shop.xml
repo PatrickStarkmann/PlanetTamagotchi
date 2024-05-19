@@ -20,7 +20,7 @@
         tools:ignore="MissingConstraints"
         android:background="@drawable/hintergrund" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/ZuMainButton"
         android:layout_width="148dp"
         android:layout_height="130dp"

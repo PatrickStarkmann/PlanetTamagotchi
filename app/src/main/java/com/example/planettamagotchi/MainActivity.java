@@ -1,6 +1,8 @@
 package com.example.planettamagotchi;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
@@ -14,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
     // private ProgressBar progressBar;
     private HealthBar healthBar;
     private Klima klima;
+    // Oli Shop
+    private ImageView shopImageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,25 +42,20 @@ public class MainActivity extends AppCompatActivity {
         ProgressBar progressBar2 = findViewById(R.id.progressBar2);
         klima = new Klima(progressBar2, findViewById(R.id.tamagotchi));
 
-       // configureNextButton();
+
 
         ImageView tamagotchiImageView = findViewById(R.id.tamagotchi);
         TamagotchiTouchListener touchListener = new TamagotchiTouchListener(tamagotchiImageView, R.drawable.tamagotchi_neu, R.drawable.kitzeln);
         tamagotchiImageView.setOnTouchListener(touchListener);
-    }
-    // ShopButton, Von Mainactivity zum Shop
-    /* Erstmal auskommentiert weil ein Fehler angezeigt wurde
-    private void configureNextButton() {
-        ImageButton shopButton = findViewById(R.id.shopButton);  // Button mit der ID buttonZuMain
-        shopButton.setOnClickListener(new View.OnClickListener(){
+
+        // Oli: Shop Imageview --> Das man den Shopbutton anklicken kann und zum Shop kommt
+        shopImageView = findViewById(R.id.shop);
+        shopImageView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick (View view){
-                startActivity(new Intent(MainActivity.this, Shop.class));
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Shop.class);
+                startActivity(intent);
             }
         });
     }
-
-     */
-
-
 }
