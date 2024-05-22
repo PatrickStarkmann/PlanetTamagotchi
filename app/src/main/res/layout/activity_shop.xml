@@ -38,13 +38,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
-        android:textSize="24sp"
         android:textColor="#FF0000"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@id/imageView2"
-        app:layout_constraintStart_toStartOf="@id/imageView2"
         app:layout_constraintEnd_toEndOf="@id/imageView2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.5" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/imageView2"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -72,13 +72,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
-        android:textSize="24sp"
         android:textColor="#FF0000"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@id/imageView7"
-        app:layout_constraintStart_toStartOf="@id/imageView7"
         app:layout_constraintEnd_toEndOf="@id/imageView7"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.5" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/imageView7"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView7"

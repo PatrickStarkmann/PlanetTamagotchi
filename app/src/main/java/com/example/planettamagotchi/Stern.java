@@ -6,6 +6,8 @@ import android.graphics.BitmapFactory;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import java.util.Random;
+import android.os.Handler;
+import android.os.Looper;
 
 public class Stern {
 
@@ -13,6 +15,7 @@ public class Stern {
     private int sternX, sternY;
     private Random random;
     private ImageView imageView;
+    private Handler handler;
 
     //Konstruktor
     public Stern(Context _context, RelativeLayout _layout){
@@ -21,6 +24,7 @@ public class Stern {
         this.random = new Random();
         this.randomPosition();
         this.bitmapToImageView(_layout);
+        this.scheduleRemoval(_layout);
     }
 
     /**setImageView
@@ -51,6 +55,19 @@ public class Stern {
         imageView.setY(sternY);
     }
 
+    /** scheduleRemoval
+     * entfernt den Stern nach 5 Sekunden
+     * @param layout = das layout auf welchem der Stern abgebildet wurde
+     */
+    private void scheduleRemoval(final RelativeLayout layout) {
+        handler = new Handler(Looper.getMainLooper());
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                layout.removeView(imageView);
+            }
+        }, 5000); // 5000 Millisekunden = 5 Sekunden
+    }
 
 
 }
