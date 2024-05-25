@@ -3,6 +3,7 @@ package com.example.planettamagotchi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import java.util.Random;
@@ -16,14 +17,17 @@ public class Stern {
     private Random random;
     private ImageView imageView;
     private Handler handler;
+    private MainActivity mainActivity;
 
     //Konstruktor
-    public Stern(Context _context, RelativeLayout _layout){
-        this.setImageView(_context);
-        this.bitmap = BitmapFactory.decodeResource(_context.getResources(),R.drawable.small_star);
+    public Stern(MainActivity _mainActivity, RelativeLayout _layout){
+        this.mainActivity = _mainActivity;
+        this.setImageView(_mainActivity);
+        this.bitmap = BitmapFactory.decodeResource(_mainActivity.getResources(),R.drawable.small_star);
         this.random = new Random();
         this.randomPosition();
         this.bitmapToImageView(_layout);
+        this.setOnClickListener(_layout);
         this.scheduleRemoval(_layout);
     }
 
@@ -69,6 +73,20 @@ public class Stern {
         }, 5000); // 5000 Millisekunden = 5 Sekunden
     }
 
+    /** setOnClickListener
+     * fügt einen OnClickListener hinzu, der auf Klickereignisse reagiert
+     * @param layout = das layout, in dem der Stern angezeigt wird
+     */
+    private void setOnClickListener(final RelativeLayout layout) {
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainActivity.incrementCount();
+                layout.removeView(imageView);
+                handler.removeCallbacksAndMessages(null); // Entfernt alle geplanten Callbacks
+            }
+        });
+    }
 
 }
 

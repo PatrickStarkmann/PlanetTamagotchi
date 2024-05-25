@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,12 +13,19 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.text.BreakIterator;
+
 public class MainActivity extends AppCompatActivity {
+    public TextView sternCounter;
     // private ProgressBar progressBar;
     private HealthBar healthBar;
     private Klima klima;
     // Oli Shop
     private ImageView shopImageView;
+
+    //zum speichern des Stern Wertes
+    private int sternCount = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        // Stern im Hintergrund erstellen, VORLÄUFIG. RandomTimer zum einfügen folgt.
+        // Julian: Stern im Hintergrund erstellen, VORLÄUFIG. RandomTimer zum einfügen folgt.
         Stern stern = new Stern(this, findViewById(R.id.zaehler));
-        // Erstelle eine Instanz der Stern-Klasse,
-        // layout als parameter wird erst noch gesucht
+        sternCounter = findViewById(R.id.SternCounter);
+
 
         // Healthbar von Anthony :
         ProgressBar progressBar = findViewById(R.id.progressBar);
@@ -58,4 +66,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    //Julian: SternCounter hochzählen
+    public void incrementCount() {
+        sternCount++;
+        sternCounter.setText(String.valueOf(sternCount));
+    }
+
 }
