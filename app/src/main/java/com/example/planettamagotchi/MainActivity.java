@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.example.planettamagotchi.PreferenceManager;
 
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     //zum speichern des Stern Wertes
     private int sternCount = 0;
     private PreferenceManager preferenceManager;
+    //Stern alle 15sek spawnen
+    private SternManager sternManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +43,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        // Julian: Stern im Hintergrund erstellen, VORLÄUFIG. RandomTimer zum einfügen folgt.
+        // Julian: Stern
         preferenceManager = new PreferenceManager(this);
-        Stern stern = new Stern(this, findViewById(R.id.zaehler));
+
         sternCounter = findViewById(R.id.SternCounter);
-        // Load the stored Stern count
         sternCount = preferenceManager.loadSternCount();
         sternCounter.setText(String.valueOf(sternCount));
+
+        // SternManager initialisieren und starten
+        RelativeLayout layout = findViewById(R.id.zaehler);
+        sternManager = new SternManager(this, layout);
+        sternManager.start();
 
 
         // Healthbar von Anthony :
