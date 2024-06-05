@@ -75,6 +75,7 @@ public class Stern {
 
     /** setOnClickListener
      * fügt einen OnClickListener hinzu, der auf Klickereignisse reagiert
+     * Zählt den Sterncounter hoch
      * @param layout = das layout, in dem der Stern angezeigt wird
      */
     private void setOnClickListener(final RelativeLayout layout) {

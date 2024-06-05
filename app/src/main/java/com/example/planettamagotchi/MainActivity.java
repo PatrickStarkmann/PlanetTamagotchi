@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import com.example.planettamagotchi.PreferenceManager;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     //zum speichern des Stern Wertes
     private int sternCount = 0;
+    private PreferenceManager preferenceManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +41,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Julian: Stern im Hintergrund erstellen, VORLÄUFIG. RandomTimer zum einfügen folgt.
+        preferenceManager = new PreferenceManager(this);
         Stern stern = new Stern(this, findViewById(R.id.zaehler));
         sternCounter = findViewById(R.id.SternCounter);
+        // Load the stored Stern count
+        sternCount = preferenceManager.loadSternCount();
+        sternCounter.setText(String.valueOf(sternCount));
 
 
         // Healthbar von Anthony :
@@ -67,7 +73,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //Julian: SternCounter hochzählen
+    //Julian: SternCounter hochzählen und speichern nach Pause der Gameview
+    protected void onPause() {
+        super.onPause();
+        preferenceManager.saveSternCount(sternCount);
+    }
     public void incrementCount() {
         sternCount++;
         sternCounter.setText(String.valueOf(sternCount));
