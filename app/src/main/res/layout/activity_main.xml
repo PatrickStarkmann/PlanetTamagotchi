@@ -104,5 +104,15 @@
         android:text="0"
         android:textSize="40sp" />
 
+    <ImageView
+        android:id="@+id/foehn"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="116dp"
+        android:layout_marginBottom="88dp"
+        app:srcCompat="@drawable/haartrockner" />
+
 
 </RelativeLayout>
