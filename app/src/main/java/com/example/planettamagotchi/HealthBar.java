@@ -1,6 +1,5 @@
 package com.example.planettamagotchi;
 import android.os.Handler;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 public class HealthBar {

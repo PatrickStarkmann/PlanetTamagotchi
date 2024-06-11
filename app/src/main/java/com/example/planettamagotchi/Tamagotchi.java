@@ -7,8 +7,6 @@ import android.widget.ProgressBar;
 
 public class Tamagotchi {
 
-    private int health;
-    private int climate;
     private ProgressBar healthBar;
     private ProgressBar climateBar;
     private ImageView tamagotchiImageView;
