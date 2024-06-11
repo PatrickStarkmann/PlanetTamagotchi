@@ -15,6 +15,8 @@ public class TamagotchiTouchListener implements View.OnTouchListener {
     private final int alternateGif; // Alternatives GIF
     private final Handler handler = new Handler(); // Handler für die Verzögerung
 
+    
+
     public TamagotchiTouchListener(ImageView imageView, int originalGif, int alternateGif) {
         this.imageView = imageView;
         this.originalGif = originalGif;
