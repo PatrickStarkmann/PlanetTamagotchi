@@ -78,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //Wolke zum Test
+        new Wolke(this,layout);
     }
 
     //Julian: SternCounter hochzählen und speichern nach Pause der Gameview
