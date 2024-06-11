@@ -58,16 +58,18 @@ public class MainActivity extends AppCompatActivity {
 
         // Healthbar von Anthony :
         ProgressBar progressBar = findViewById(R.id.progressBar);
-        healthBar = new HealthBar(progressBar, findViewById(R.id.tamagotchi));
+        healthBar = new HealthBar(progressBar);
         // Klimabar von Anthony:
         ProgressBar progressBar2 = findViewById(R.id.progressBar2);
-        klima = new Klima(progressBar2, findViewById(R.id.tamagotchi));
+        klima = new Klima(progressBar2);
 
 
 
         ImageView tamagotchiImageView = findViewById(R.id.tamagotchi);
-        TamagotchiTouchListener touchListener = new TamagotchiTouchListener(tamagotchiImageView, R.drawable.tamagotchi_neu, R.drawable.kitzeln);
+        TamagotchiTouchListener touchListener = new TamagotchiTouchListener(tamagotchiImageView, R.drawable.tamagotchi_neu, R.drawable.kitzeln, progressBar, progressBar2);
         tamagotchiImageView.setOnTouchListener(touchListener);
+        // Tamagotchi Verhalten von Patrick
+        Tamagotchi tamagotchi = new Tamagotchi(progressBar, progressBar2, tamagotchiImageView);
 
         // Oli: Shop Imageview --> Das man den Shopbutton anklicken kann und zum Shop kommt
         shopImageView = findViewById(R.id.shop);

@@ -14,13 +14,17 @@ public class TamagotchiTouchListener implements View.OnTouchListener {
     private final int originalGif; // Originales GIF
     private final int alternateGif; // Alternatives GIF
     private final Handler handler = new Handler(); // Handler für die Verzögerung
+    private ProgressBar healthBar;
+    private ProgressBar climateBar;
 
     
 
-    public TamagotchiTouchListener(ImageView imageView, int originalGif, int alternateGif) {
+    public TamagotchiTouchListener(ImageView imageView, int originalGif, int alternateGif, ProgressBar healthBar, ProgressBar climateBar) {
         this.imageView = imageView;
         this.originalGif = originalGif;
         this.alternateGif = alternateGif;
+        this.healthBar = healthBar;
+        this.climateBar = climateBar;
     }
 
     @Override
@@ -40,7 +44,8 @@ public class TamagotchiTouchListener implements View.OnTouchListener {
                     swipeCount++;
                     // Führe hier weitere Aktionen aus, die du im Zusammenhang mit dem Swipe durchführen möchtest
                     System.out.println("Es wurde geswiped yuhu" + "SwipeCount:" + swipeCount);
-                    changeGifTemporarily(); // ändert Tamagotchi
+                    if ((healthBar.getProgress() >= 30) & (climateBar.getProgress() > 30 & climateBar.getProgress() < 70))
+                        changeGifTemporarily(); // ändert Tamagotchi
                 }
                 break;
         }

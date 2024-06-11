@@ -11,15 +11,12 @@ public class Klima {
     private Handler handler;
     private int progress;
 
-    private ImageView tamagotchiImageView;
 
 
-
-    public Klima(ProgressBar progressBar, ImageView imageView) {
+    public Klima(ProgressBar progressBar) {
         this.progressBar2 = progressBar;
         this.handler = new Handler();
         this.progress = 50; // Startet in der Mitte
-        tamagotchiImageView = imageView;
 
         updateProgress();
         startUpdating();
@@ -51,14 +48,11 @@ public class Klima {
         } else if (progress < 0) {
             progress = 0;
         }
-
-        if (progress < 30) {
-            tamagotchiImageView.setImageResource(R.drawable.zuheiss);
-        } else if (progress > 70) {
-            tamagotchiImageView.setImageResource(R.drawable.frieren);
-        }
-
         updateProgress();
+    }
+
+    public int getProgress() {
+        return this.progress;
     }
 
 

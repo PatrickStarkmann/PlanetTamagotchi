@@ -8,13 +8,11 @@ public class HealthBar {
     private Handler handler;
     private int progress = 100;
 
-    private final ImageView tamagotchiImageView;
 
 
-    public HealthBar(ProgressBar progressBar, ImageView tamagotchiImageView) {
+    public HealthBar(ProgressBar progressBar) {
         this.progressBar = progressBar;
         this.handler = new Handler();
-        this.tamagotchiImageView = tamagotchiImageView;
         updateProgress();
         startDecreasing();
     }
@@ -27,9 +25,6 @@ public class HealthBar {
         if (progress > 0) {
             progress -= 5;
             updateProgress();
-            if (progress < 30) {
-                tamagotchiImageView.setImageResource(R.drawable.krank);
-            }
         }
     }
 
@@ -41,6 +36,10 @@ public class HealthBar {
                 handler.postDelayed(this, 10000); // Alle 5 Sekunden ausführen
             }
         }, 5000); // Erste Ausführung nach 5 Sekunden
+    }
+
+    public int getProgress() {
+        return this.progress;
     }
 
 }
