@@ -14,6 +14,8 @@ public class SternManager {
     private final RelativeLayout layout;
     private final Runnable sternRunnable;
 
+
+
     /**
      * Konstruktor für den SternManager.
      *

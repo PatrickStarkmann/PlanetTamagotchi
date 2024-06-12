@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     // Oli Shop
     private ImageView shopImageView;
 
+    private TextView sternCounterView;
+
+
     //zum speichern des Stern Wertes
     private int sternCount = 0;
     private PreferenceManager preferenceManager;
@@ -41,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        //Anthony Stern Synchro
+
 
 
         // Julian: Stern
