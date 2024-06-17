@@ -25,14 +25,12 @@ public class MainActivity extends AppCompatActivity {
     // Oli Shop
     private ImageView shopImageView;
 
-    private TextView sternCounterView;
-
-
     //zum speichern des Stern Wertes
     private int sternCount = 0;
     private PreferenceManager preferenceManager;
     //Stern alle 15sek spawnen
-    private SternManager sternManager;
+    private AddOnManager addOnManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
         // SternManager initialisieren und starten
         RelativeLayout layout = findViewById(R.id.zaehler);
-        sternManager = new SternManager(this, layout);
-        sternManager.start();
+        addOnManager = new AddOnManager(this, layout);
+        addOnManager.start();
 
 
         // Healthbar von Anthony :
@@ -87,8 +85,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Wolke zum Test
-        new Wolke(this,layout);
+
     }
 
     //Julian: SternCounter hochzählen und speichern nach Pause der Gameview
@@ -100,5 +97,12 @@ public class MainActivity extends AppCompatActivity {
         sternCount++;
         sternCounter.setText(String.valueOf(sternCount));
     }
+    //Julian: Wolke beeinflusst HP
+    public void startWolkenSchaden() {
+        healthBar.wolkenDecrease();
+    }
 
+    public void stopWolkenSchaden() {
+        healthBar.stopDecreasing();
+    }
 }

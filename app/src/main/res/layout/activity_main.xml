@@ -104,7 +104,7 @@
         android:text="0"
         android:textSize="40sp" />
 
-    <ImageView
+    <com.example.planettamagotchi.DraggableImageView
         android:id="@+id/foehn"
         android:layout_width="85dp"
         android:layout_height="85dp"
