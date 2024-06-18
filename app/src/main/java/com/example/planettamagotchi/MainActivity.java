@@ -65,9 +65,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Healthbar von Anthony :
         ProgressBar progressBar = findViewById(R.id.progressBar);
-        healthBar = new HealthBar(progressBar);
-        // Klimabar von Anthony:
         ProgressBar progressBar2 = findViewById(R.id.progressBar2);
+        healthBar = new HealthBar(progressBar, progressBar2);
+        // Klimabar von Anthony:
         klima = new Klima(progressBar2);
 
 
