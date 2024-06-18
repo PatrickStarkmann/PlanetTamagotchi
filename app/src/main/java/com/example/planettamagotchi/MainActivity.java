@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private int sternCount = 0;
     private PreferenceManager preferenceManager;
     //Stern alle 15sek spawnen
-    private SternManager sternManager;
+    private AddOnManager addOnManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
 
         // SternManager initialisieren und starten
         RelativeLayout layout = findViewById(R.id.zaehler);
-        sternManager = new SternManager(this, layout);
-        sternManager.start();
+        addOnManager = new AddOnManager(this, layout);
+        addOnManager.start();
 
 
         // Healthbar von Anthony :
