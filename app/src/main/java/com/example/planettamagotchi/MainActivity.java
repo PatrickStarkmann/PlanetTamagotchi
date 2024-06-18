@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private Klima klima;
     // Oli Shop
     private ImageView shopImageView;
+    private ImageView minigameImageView;
 
     private TextView sternCounterView;
 
@@ -83,6 +84,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Shop.class);
+                startActivity(intent);
+            }
+        });
+
+        // Navigiere zu GameHomeScreen wenn auf das minigame ImageView geklickt wird
+        minigameImageView = findViewById(R.id.minigame);
+        minigameImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, GameHomeScreen.class);
                 startActivity(intent);
             }
         });
