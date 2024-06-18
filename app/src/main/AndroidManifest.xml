@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlanetTamagotchi"
         tools:targetApi="31">
+
         <activity android:name=".PreHomeBildschirm"
             android:exported="true">
             <intent-filter>
@@ -19,18 +20,36 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".Shop"
             android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--  Oli -->
+        <!-- Aktualisiere GameActivity als LAUNCHER Activity -->
+        <activity
+            android:name=".GameActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+        <!-- Hat Oli eingefügt , kp funktioniert halt so -->
+        <activity
+            android:name=".GameHomeScreen"
+            android:exported="true" />
 
         <meta-data
             android:name="preloaded_fonts"
