@@ -22,9 +22,10 @@ public class Tamagotchi {
         startTamagotchi();
     }
 
-    //hallo
     private void updateTamagotchiState() {
-        if (healthBar.getProgress() < 30) {
+        if (healthBar.getProgress() == 0) {
+            tamagotchiImageView.setImageResource(R.drawable.tot);
+        } else if (healthBar.getProgress() < 30) {
             tamagotchiImageView.setImageResource(R.drawable.krank);
         } else if (climateBar.getProgress() < 30) {
             tamagotchiImageView.setImageResource(R.drawable.zuheiss);
