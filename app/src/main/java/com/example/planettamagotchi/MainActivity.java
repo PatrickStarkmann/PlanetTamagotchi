@@ -87,8 +87,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Wolke zum Test
-        new Wolke(this,layout);
     }
 
     //Julian: SternCounter hochzählen und speichern nach Pause der Gameview
@@ -99,6 +97,14 @@ public class MainActivity extends AppCompatActivity {
     public void incrementCount() {
         sternCount++;
         sternCounter.setText(String.valueOf(sternCount));
+    }
+    //Julian: Schaden den die Wolke macht aufrufen
+    public void startWolkenSchaden(){
+        this.healthBar.wolkenDecrease();
+    }
+    //Julian: Schaden den die Wolke macht stoppen
+    public void stopWolkenSchaden(){
+        this.healthBar.stopDecreasing();
     }
 
 }
