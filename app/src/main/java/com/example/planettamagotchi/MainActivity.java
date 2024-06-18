@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     private Klima klima;
     // Oli Shop
     private ImageView shopImageView;
-    private ImageView minigameImageView;
 
     private TextView sternCounterView;
 
@@ -90,16 +89,6 @@ public class MainActivity extends AppCompatActivity {
 
         //Wolke zum Test
         new Wolke(this,layout);
-
-        // Button damit man zum Minigame kommt
-        ImageView minigameImageView = findViewById(R.id.minigame);
-        minigameImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, GameHomeScreen.class);
-                startActivity(intent);
-            }
-        });
     }
 
     //Julian: SternCounter hochzählen und speichern nach Pause der Gameview
@@ -111,7 +100,5 @@ public class MainActivity extends AppCompatActivity {
         sternCount++;
         sternCounter.setText(String.valueOf(sternCount));
     }
-
-
 
 }
