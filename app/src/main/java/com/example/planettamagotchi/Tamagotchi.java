@@ -21,6 +21,8 @@ public class Tamagotchi {
 
         startTamagotchi();
     }
+
+    //hallo
     private void updateTamagotchiState() {
         if (healthBar.getProgress() == 0) {
             tamagotchiImageView.setImageResource(R.drawable.tot);
