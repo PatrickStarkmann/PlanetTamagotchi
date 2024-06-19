@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     private ImageView shopImageView;
     private ImageView minigameImageView;
 
-    private TextView sternCounterView;
 
 
     //zum speichern des Stern Wertes
@@ -117,5 +116,6 @@ public class MainActivity extends AppCompatActivity {
     public void stopWolkenSchaden(){
         this.healthBar.stopDecreasing();
     }
+    // Methode zum Setzen der Wolke für die DraggableImageView
 
 }

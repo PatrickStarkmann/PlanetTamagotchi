@@ -15,10 +15,12 @@ public class Wolke {
     private MainActivity mainActivity;
     private ImageView imageView;
     private Handler handler;
+    private RelativeLayout layout;
 
     //Konstruktor
     public Wolke(MainActivity _mainActivity, RelativeLayout _layout){
         this.mainActivity = _mainActivity;
+        this.layout = _layout;
         this.setImageView(_mainActivity);
         this.bitmap = BitmapFactory.decodeResource(_mainActivity.getResources(),R.drawable.small_wolken);
         this.bitmapToImageView(_layout);
@@ -63,9 +65,12 @@ public class Wolke {
     /**
      * Wolke entfernen
      */
-    private void removeWolke() {
-        ((RelativeLayout) imageView.getParent()).removeView(imageView);
+    public void removeWolke() {
+        layout.removeView(imageView);
     }
 
+    public ImageView getImageView() {
+        return imageView;
+    }
 }
 

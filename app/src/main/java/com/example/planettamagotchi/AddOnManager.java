@@ -77,6 +77,13 @@ public class AddOnManager {
      * Erstellt ein neues Wolken Objekt
      */
     private void createNewWolke(){
-        new Wolke(mainActivity, layout);
+        Wolke wolke = new Wolke(mainActivity, layout);
+        // Wenn die Wolke erstellt wird, setze den Listener für das DraggableImageView
+        if (mainActivity != null && layout != null) {
+            DraggableImageView draggableImageView = mainActivity.findViewById(R.id.foehn);
+            if (draggableImageView != null) {
+                draggableImageView.setWolke(wolke);
+            }
+        }
     }
 }
