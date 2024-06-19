@@ -9,15 +9,13 @@ public class Klima {
     private ProgressBar progressBar2;
     private Handler handler;
     private int progress;
-    private ProgressBar healthBar;
 
 
 
-    public Klima(ProgressBar progressBar, ProgressBar healthBar) {
+    public Klima(ProgressBar progressBar) {
         this.progressBar2 = progressBar;
         this.handler = new Handler();
         this.progress = 50; // Startet in der Mitte
-        this.healthBar = healthBar;
 
         updateProgress();
         startUpdating();
@@ -41,10 +39,7 @@ public class Klima {
         Random random = new Random();
         int change = random.nextBoolean() ? 5 : -5; // Entweder um 5% erhöhen oder um 5% verringern
 
-        // wenn das Tamagotchi tot ist bleibt die Klimabar stehen
-        if (healthBar.getProgress() != 0) {
-            progress += change;
-        }
+        progress += change;
 
         // Sicherstellen, dass der Fortschritt innerhalb des gültigen Bereichs (0-100) bleibt
         if (progress > 100) {

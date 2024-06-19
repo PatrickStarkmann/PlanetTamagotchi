@@ -7,14 +7,12 @@ public class HealthBar {
     private Handler handler;
     private int progress = 100;
     private Runnable decreaseRunnable;
-    private ProgressBar climateBar;
 
 
 
-    public HealthBar(ProgressBar progressBar, ProgressBar climateBar) {
+    public HealthBar(ProgressBar progressBar) {
         this.progressBar = progressBar;
         this.handler = new Handler();
-        this.climateBar = climateBar;
         updateProgress();
         startDecreasing();
     }
@@ -24,12 +22,7 @@ public class HealthBar {
     }
 
     private void decreaseProgress() {
-        // nur wenn das Klima passt verliert es wenig Leben
-        if ((progress > 0) & (climateBar.getProgress() > 30 & climateBar.getProgress() < 70) ) {
-            progress -= 2;
-            updateProgress();
-        }
-        else {
+        if (progress > 0) {
             progress -= 5;
             updateProgress();
         }

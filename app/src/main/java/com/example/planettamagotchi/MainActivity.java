@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     private ImageView shopImageView;
     private ImageView minigameImageView;
 
-    private TextView sternCounterView;
 
 
     //zum speichern des Stern Wertes
@@ -65,10 +64,10 @@ public class MainActivity extends AppCompatActivity {
 
         // Healthbar von Anthony :
         ProgressBar progressBar = findViewById(R.id.progressBar);
-        ProgressBar progressBar2 = findViewById(R.id.progressBar2);
-        healthBar = new HealthBar(progressBar, progressBar2);
+        healthBar = new HealthBar(progressBar);
         // Klimabar von Anthony:
-        klima = new Klima(progressBar2, progressBar);
+        ProgressBar progressBar2 = findViewById(R.id.progressBar2);
+        klima = new Klima(progressBar2);
 
 
 
@@ -117,5 +116,6 @@ public class MainActivity extends AppCompatActivity {
     public void stopWolkenSchaden(){
         this.healthBar.stopDecreasing();
     }
+    // Methode zum Setzen der Wolke für die DraggableImageView
 
 }
