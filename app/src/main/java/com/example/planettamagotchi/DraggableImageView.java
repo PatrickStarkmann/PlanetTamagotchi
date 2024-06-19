@@ -77,7 +77,7 @@ public class DraggableImageView extends androidx.appcompat.widget.AppCompatImage
         return imageViewRect.intersect(wolkeRect);
     }
 
-    // Methode zum Entfernen der Wolke
+    // Methode zum Entfernen der Wolke und auf null setzten
     private void removeWolke() {
         if (wolke != null) {
             wolke.removeWolke();
