@@ -1,7 +1,9 @@
 package com.example.planettamagotchi;
 
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.widget.ProgressBar;
+import android.content.Context;
 
 import java.util.Random;
 
@@ -10,14 +12,22 @@ public class Klima {
     private Handler handler;
     private int progress;
     private ProgressBar healthBar;
+    public static final String PREFS_NAME = "KlimaPrefs";
+    public static final String PROGRESS_KEY = "KlimaProgress";
+    private SharedPreferences sharedPreferences;
 
 
 
-    public Klima(ProgressBar progressBar, ProgressBar healthBar) {
+    public Klima(ProgressBar progressBar, ProgressBar healthBar, Context context) {
         this.progressBar2 = progressBar;
         this.handler = new Handler();
         this.progress = 50; // Startet in der Mitte
         this.healthBar = healthBar;
+        this.sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+
+        // Fortschritt aus SharedPreferences laden
+        this.progress = sharedPreferences.getInt(PROGRESS_KEY, 50); // Standardwert ist 50
+
 
         updateProgress();
         startUpdating();
@@ -53,6 +63,11 @@ public class Klima {
             progress = 0;
         }
         updateProgress();
+
+        // Fortschritt in SharedPreferences speichern
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(PROGRESS_KEY, progress);
+        editor.apply();
     }
 
     public int getProgress() {
