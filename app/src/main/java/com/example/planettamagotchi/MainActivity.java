@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         // Healthbar von Anthony :
         ProgressBar progressBar = findViewById(R.id.progressBar);
         ProgressBar progressBar2 = findViewById(R.id.progressBar2);
-        healthBar = new HealthBar(progressBar, progressBar2);
+        healthBar = new HealthBar(progressBar, progressBar2, this);
         // Klimabar von Anthony:
         klima = new Klima(progressBar2, progressBar, this);
 
@@ -106,12 +106,26 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         preferenceManager.saveSternCount(sternCount);
 
+
         // Fortschritt der Klimabar speichern
+        /*
         SharedPreferences sharedPreferences = getSharedPreferences(Klima.PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(Klima.PROGRESS_KEY, klima.getProgress());
         editor.apply();
+
+         */
+
+        // Fortschritt der Healthbar speichern
+        /* erstmal auskommentiert weil Tamagotchi sonst stirbt
+        sharedPreferences = getSharedPreferences(HealthBar.PREFS_NAME, Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        editor.putInt(HealthBar.PROGRESS_KEY, healthBar.getProgress());
+        editor.apply();
+
+         */
     }
+
     public void incrementCount() {
         sternCount++;
         sternCounter.setText(String.valueOf(sternCount));
