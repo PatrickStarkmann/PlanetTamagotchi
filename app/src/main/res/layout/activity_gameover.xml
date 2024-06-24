@@ -12,6 +12,9 @@
         android:scaleType="centerCrop" />
 
     <!-- Game Over Text -->
+
+    <!-- LinearLayout für die Buttons -->
+
     <TextView
         android:id="@+id/gameOverText"
         android:layout_width="wrap_content"
@@ -19,32 +22,41 @@
         android:text="Game Over"
         android:textSize="48sp"
         android:textColor="#FFFFFF"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-100dp"
         android:textStyle="bold"
-        android:layout_marginBottom="100dp" />
+        android:fontFamily="@font/press_start_2p"
+        android:layout_centerInParent="true"
+        android:gravity="center" />
 
-    <!-- ImageView für Rückkehr zum Spiel -->
-    <ImageView
-        android:id="@+id/restartButton"
+    <LinearLayout
+        android:id="@+id/buttonLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/videospielkonsole"
         android:layout_below="@id/gameOverText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:clickable="true"
-        android:focusable="true" />
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp">
 
-    <!-- ImageView für eine andere Activity -->
-    <ImageView
-        android:id="@+id/tamagotchiButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/tamagotchi_neu"
-        android:layout_below="@id/restartButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:clickable="true"
-        android:focusable="true" />
+        <!-- ImageView für Rückkehr zum Spiel -->
+        <ImageView
+            android:id="@+id/restartButton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/videospielkonsole"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginEnd="20dp" />
+
+        <!-- ImageView für eine andere Activity -->
+        <ImageView
+            android:id="@+id/tamagotchiButton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/tamagotchi_neu"
+            android:clickable="true"
+            android:focusable="true" />
+
+    </LinearLayout>
 
 </RelativeLayout>

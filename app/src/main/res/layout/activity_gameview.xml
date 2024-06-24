@@ -22,23 +22,24 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/press_start_2p"
         android:text="Dodge Game"
+        android:textColor="@color/white"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        android:background="@android:color/transparent" />
+        android:textStyle="bold" />
 
     <!-- GifImageView für das Tamagotchi -->
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/tamagotchi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="266dp"
+        android:layout_height="332dp"
         android:layout_below="@id/gameTitle"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/tamagotchi_neu"
+        android:layout_marginTop="103dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitCenter" />
+        android:scaleType="fitCenter"
+        android:src="@drawable/tamagotchi_neu" />
 
     <!-- Button zentriert unter dem GifImageView -->
     <Button
@@ -48,6 +49,7 @@
         android:layout_below="@id/tamagotchi"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:onClick="StartGame" />
+        android:onClick="StartGame"
+        android:text="START" />
 
 </RelativeLayout>
