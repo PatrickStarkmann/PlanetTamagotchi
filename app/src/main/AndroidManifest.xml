@@ -46,10 +46,13 @@
         </activity>
 
 
+
         <!-- Hat Oli eingefügt , kp funktioniert halt so -->
         <activity
             android:name=".GameHomeScreen"
             android:exported="true" />
+
+        <activity android:name=".GameOver"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
