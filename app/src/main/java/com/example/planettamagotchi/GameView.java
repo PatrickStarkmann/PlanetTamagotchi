@@ -1,6 +1,7 @@
 package com.example.planettamagotchi;
 
 import android.content.Context;
+import android.content.Intent; // Import für Intent
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -34,8 +35,11 @@ public class GameView extends View {
     private int score = 0;
     private Paint scorePaint;
 
+    private Context context; // Kontext-Variable hinzufügen
+
     public GameView(Context context) {
         super(context);
+        this.context = context; // Kontext initialisieren
         init();
     }
 
@@ -100,6 +104,8 @@ public class GameView extends View {
             }
             if (collisionDetection(meteor)) {
                 handler.removeCallbacks(runnable);
+                Intent intent = new Intent(context, GameOver.class);
+                context.startActivity(intent);
                 return;
             }
         }
