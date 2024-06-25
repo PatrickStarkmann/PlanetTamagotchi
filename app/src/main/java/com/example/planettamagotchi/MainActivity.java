@@ -1,8 +1,6 @@
 package com.example.planettamagotchi;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -21,7 +19,7 @@ import java.text.BreakIterator;
 
 public class MainActivity extends AppCompatActivity {
     public TextView sternCounter;
-    //private ProgressBar progressBar;
+    // private ProgressBar progressBar;
     private HealthBar healthBar;
     private Klima klima;
     // Oli Shop
@@ -67,9 +65,9 @@ public class MainActivity extends AppCompatActivity {
         // Healthbar von Anthony :
         ProgressBar progressBar = findViewById(R.id.progressBar);
         ProgressBar progressBar2 = findViewById(R.id.progressBar2);
-        healthBar = new HealthBar(progressBar, progressBar2, this);
+        healthBar = new HealthBar(progressBar, progressBar2,this);
         // Klimabar von Anthony:
-        klima = new Klima(progressBar2, progressBar, this);
+        klima = new Klima(progressBar2, progressBar,this);
 
 
 
@@ -105,30 +103,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         preferenceManager.saveSternCount(sternCount);
-
-
-        // Fortschritt der Klimabar speichern
-        /*
-        SharedPreferences sharedPreferences = getSharedPreferences(Klima.PREFS_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(Klima.PROGRESS_KEY, klima.getProgress());
-        editor.apply();
-
-         */
-
-        // Fortschritt der Healthbar speichern
-        /* erstmal auskommentiert weil Tamagotchi sonst stirbt
-        sharedPreferences = getSharedPreferences(HealthBar.PREFS_NAME, Context.MODE_PRIVATE);
-        editor = sharedPreferences.edit();
-        editor.putInt(HealthBar.PROGRESS_KEY, healthBar.getProgress());
-        editor.apply();
-
-         */
     }
-
     public void incrementCount() {
         sternCount++;
         sternCounter.setText(String.valueOf(sternCount));
+        preferenceManager.saveSternCount(sternCount);
     }
     //Julian: Schaden den die Wolke macht aufrufen
     public void startWolkenSchaden(){

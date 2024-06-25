@@ -22,10 +22,12 @@ public class Shop extends AppCompatActivity {
     private TextView engelCounterTextView;
     private TextView radioCounterTextView;
     private TextView teaCounterTextView;
+    private TextView sternCounterTextView;
     private int colaCounter = 0;
     private int teaCounter = 0;
     private int engelCounter = 0;
     private int radioCounter = 0;
+    private PreferenceManager preferenceManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,13 @@ public class Shop extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        //SternCounter hinzufügen
+        preferenceManager = new PreferenceManager(this);
+
+        sternCounterTextView = findViewById(R.id.SternCounterShop);
+        int sternCount = preferenceManager.loadSternCount();
+        sternCounterTextView.setText(String.valueOf(sternCount));
 
         // Zurück zur MainActivity Button
         zuMainButton = findViewById(R.id.ZuMainButton);
