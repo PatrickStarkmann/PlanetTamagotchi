@@ -50,6 +50,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:onClick="StartGame"
-        android:text="START" />
+        android:text="Start" />
 
 </RelativeLayout>
