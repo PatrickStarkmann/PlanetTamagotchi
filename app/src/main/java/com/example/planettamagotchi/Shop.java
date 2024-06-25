@@ -1,5 +1,7 @@
 package com.example.planettamagotchi;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +17,7 @@ public class Shop extends AppCompatActivity {
     private ImageView zuMainButton;
     private ImageView colaImageView;
     private ImageView teaImageView;
-
+    private ImageView preiseImageView;
     private ImageView engelImageView;
     private ImageView radioImageView;
     private TextView colaCounterTextView;
@@ -74,6 +76,15 @@ public class Shop extends AppCompatActivity {
                 engelCounterTextView.setText(String.valueOf(engelCounter));
             }
         });
+        // Initialize ImageView for Preise and set OnClickListener
+        preiseImageView = findViewById(R.id.Preise);
+        preiseImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPreiseDialog();
+            }
+        });
+
         // Initialize ImageView and TextView for Radio
         radioImageView = findViewById(R.id.imageView8);
         radioCounterTextView = findViewById(R.id.textView3);
@@ -99,6 +110,35 @@ public class Shop extends AppCompatActivity {
                 teaCounterTextView.setText(String.valueOf(teaCounter));
             }
         });
+    }
+    private void showPreiseDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("ABGESPACEDE PREISE");
+
+        String[] descriptions = {
+                "Cola: Eine erfrischende Cola.                                                    5 STERNE",
+                "Tee: Ein beruhigender Tee.                                                        5 STERNE",
+                "Engel: Noch eine Chance.                                                      100 STERNE",
+                "Radio: Ein altes Radio mit Songs                                            25 STERNE"
+        };
+
+        builder.setItems(descriptions, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Handle the click event if needed
+            }
+        });
+
+
+        builder.setNegativeButton("LETS GO BACK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
 
