@@ -8,7 +8,7 @@
         android:id="@+id/hintergrund"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/hintergrund_neu"
+        android:src="@drawable/pregame"
         android:scaleType="centerCrop" />
 
     <!-- Game Over Text -->
@@ -19,15 +19,16 @@
         android:id="@+id/gameOverText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Game Over"
-        android:textSize="48sp"
-        android:textColor="#FFFFFF"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
         android:layout_marginTop="-100dp"
-        android:textStyle="bold"
+        android:layout_marginEnd="171dp"
         android:fontFamily="@font/press_start_2p"
-        android:layout_centerInParent="true"
-        android:gravity="center" />
+        android:gravity="center"
+        android:text="Game Over"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:id="@+id/buttonLayout"
