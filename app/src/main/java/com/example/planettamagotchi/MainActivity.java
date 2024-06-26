@@ -119,4 +119,18 @@ public class MainActivity extends AppCompatActivity {
     }
     // Methode zum Setzen der Wolke für die DraggableImageView
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Überprüfen, ob Bonussterne übergeben wurden
+        Intent intent = getIntent();
+        if (intent != null && intent.hasExtra("BONUS_STERNE")) {
+            int bonusSterne = intent.getIntExtra("BONUS_STERNE", 0);
+            for (int i = 0; i < bonusSterne; i++) {
+                incrementCount();
+            }
+            // Entferne die Bonussterne, um Mehrfacherhöhungen zu vermeiden
+            intent.removeExtra("BONUS_STERNE");
+        }
+    }
 }

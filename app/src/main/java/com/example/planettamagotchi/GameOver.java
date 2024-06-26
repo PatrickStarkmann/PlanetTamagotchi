@@ -14,6 +14,8 @@ public class GameOver extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gameover);
 
+        int bonusSterne = getIntent().getIntExtra("BONUS_STERNE", 0);
+
         ImageView restartButton = findViewById(R.id.restartButton);
         restartButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,8 +31,9 @@ public class GameOver extends AppCompatActivity {
         tamagotchiButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Wechsel zu einer anderen Activity
-                Intent intent = new Intent(GameOver.this, MainActivity.class); // Ersetze TamagotchiActivity durch die gewünschte Activity
+                // Wechsel zu MainActivity und übergeben der Bonussterne
+                Intent intent = new Intent(GameOver.this, MainActivity.class);
+                intent.putExtra("BONUS_STERNE", bonusSterne);
                 startActivity(intent);
                 finish(); // Beendet die aktuelle Activity
             }

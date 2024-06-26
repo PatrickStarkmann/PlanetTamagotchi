@@ -105,16 +105,10 @@ public class GameView extends View {
             if (collisionDetection(meteor)) {
                 handler.removeCallbacks(runnable);
 
-                // Berechne 40 % der gesammelten Punkte und erhöhe den Sternencounter
+                // Berechne 40 % der gesammelten Punkte und übergebe sie an GameOver
                 int bonusSterne = (int) (score * 0.4);
-                if (context instanceof MainActivity) {
-                    MainActivity mainActivity = (MainActivity) context;
-                    for (int i = 0; i < bonusSterne; i++) {
-                        mainActivity.incrementCount();
-                    }
-                }
-
                 Intent intent = new Intent(context, GameOver.class);
+                intent.putExtra("BONUS_STERNE", bonusSterne);
                 context.startActivity(intent);
                 return;
             }
