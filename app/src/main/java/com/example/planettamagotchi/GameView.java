@@ -1,7 +1,7 @@
 package com.example.planettamagotchi;
 
 import android.content.Context;
-import android.content.Intent; // Import für Intent
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -104,6 +104,16 @@ public class GameView extends View {
             }
             if (collisionDetection(meteor)) {
                 handler.removeCallbacks(runnable);
+
+                // Berechne 40 % der gesammelten Punkte und erhöhe den Sternencounter
+                int bonusSterne = (int) (score * 0.4);
+                if (context instanceof MainActivity) {
+                    MainActivity mainActivity = (MainActivity) context;
+                    for (int i = 0; i < bonusSterne; i++) {
+                        mainActivity.incrementCount();
+                    }
+                }
+
                 Intent intent = new Intent(context, GameOver.class);
                 context.startActivity(intent);
                 return;
