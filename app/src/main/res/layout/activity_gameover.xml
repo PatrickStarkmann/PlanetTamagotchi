@@ -11,9 +11,24 @@
         android:src="@drawable/pregame"
         android:scaleType="centerCrop" />
 
+
+
     <!-- Game Over Text -->
 
     <!-- LinearLayout für die Buttons -->
+
+    <!-- zeigt die gewonnen Bonus Sterne -->
+
+    <TextView
+        android:id="@+id/SternCounterGameOver"
+        android:layout_width="97dp"
+        android:layout_height="76dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="432dp"
+        android:layout_marginEnd="314dp"
+        android:text="0"
+        android:textSize="40sp" />
 
     <TextView
         android:id="@+id/gameOverText"

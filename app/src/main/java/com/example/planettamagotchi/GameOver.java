@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class GameOver extends AppCompatActivity {
+
+    private TextView sternCounterTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,5 +41,9 @@ public class GameOver extends AppCompatActivity {
                 finish(); // Beendet die aktuelle Activity
             }
         });
+
+        //anzeigen wie viele Sterne gewonnen wurden
+        sternCounterTextView = findViewById(R.id.SternCounterGameOver);
+        sternCounterTextView.setText(String.valueOf(bonusSterne));
     }
 }
