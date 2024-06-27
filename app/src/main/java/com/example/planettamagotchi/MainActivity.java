@@ -30,6 +30,12 @@ public class MainActivity extends AppCompatActivity {
     // Oli Shop
     private ImageView shopImageView;
     private ImageView minigameImageView;
+    private ProgressBar klimaProgressBar;
+    private ProgressBar healthProgressBar;
+    private ImageView tamagotchi;
+    private DraggableImageView colaMain;
+    private DraggableImageView teeMain;
+    private DraggableImageView wiederbelebung;
 
 
 
@@ -51,13 +57,30 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Anthony Items
-        GifImageView tamagotchiImageView = findViewById(R.id.tamagotchi);
-        DraggableImageView colaMain = findViewById(R.id.ColaMain);
-        DraggableImageView teeMain = findViewById(R.id.TeeMain);
-        colaMain.setTamagotchi(tamagotchiImageView);
+        ImageView tamagotchiImageView = findViewById(R.id.tamagotchi);
+        // Initialisiere die Views
+        tamagotchi = findViewById(R.id.tamagotchi);
+        colaMain = findViewById(R.id.ColaMain);
+        teeMain = findViewById(R.id.TeeMain);
+        wiederbelebung=findViewById(R.id.Wiederbelebung);
+
+        // Initialisiere die ProgressBars
+        klimaProgressBar = findViewById(R.id.progressBar2);
+        healthProgressBar = findViewById(R.id.progressBar);
+
+        // Initialisiere die Klima-Klasse und Health-Klasse
+        healthBar = new HealthBar(healthProgressBar, klimaProgressBar, this);
+        klima = new Klima(klimaProgressBar, healthProgressBar, this);
+
+        // Setze die tamagotchi- und klima-Referenzen in den DraggableImageViews
+        colaMain.setTamagotchi(tamagotchi);
         colaMain.setKlima(klima);
-        teeMain.setTamagotchi(tamagotchiImageView);
+
+        teeMain.setTamagotchi(tamagotchi);
         teeMain.setKlima(klima);
+
+        wiederbelebung.setTamagotchi(tamagotchi);
+        wiederbelebung.setHealthBar(healthBar);
 
 
 
@@ -77,9 +100,9 @@ public class MainActivity extends AppCompatActivity {
         // Healthbar von Anthony :
         ProgressBar progressBar = findViewById(R.id.progressBar);
         ProgressBar progressBar2 = findViewById(R.id.progressBar2);
-        healthBar = new HealthBar(progressBar, progressBar2, this);
-        // Klimabar von Anthony:
-        klima = new Klima(progressBar2, progressBar, this);
+
+
+
 
 
 
@@ -117,22 +140,23 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Fortschritt der Klimabar speichern
-        /*
+
         SharedPreferences sharedPreferences = getSharedPreferences(Klima.PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(Klima.PROGRESS_KEY, klima.getProgress());
         editor.apply();
 
-         */
+
 
         // Fortschritt der Healthbar speichern
-        /* erstmal auskommentiert weil Tamagotchi sonst stirbt
+       // erstmal auskommentiert weil Tamagotchi sonst stirbt
         sharedPreferences = getSharedPreferences(HealthBar.PREFS_NAME, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         editor.putInt(HealthBar.PROGRESS_KEY, healthBar.getProgress());
         editor.apply();
 
-         */
+
+
     }
 
     public void incrementCount() {

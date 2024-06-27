@@ -2,6 +2,7 @@ package com.example.planettamagotchi;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.ProgressBar;
 
 public class HealthBar {
@@ -88,10 +89,12 @@ public class HealthBar {
         return this.progress;
     }
 
-    private void saveProgress() {
+    public void saveProgress() {
+        Log.d("Klima", "Speichern des Fortschritts: " + progress);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(PROGRESS_KEY, progress);
-        editor.apply();
+        boolean success = editor.commit(); // Verwenden Sie commit() statt apply(), um sofortige Speicherung sicherzustellen
+        Log.d("Klima", "Speichern erfolgreich: " + success);
     }
 
     public void increaseHealth(int amount) {
@@ -102,5 +105,6 @@ public class HealthBar {
         updateProgress();
         saveProgress();
     }
+
 
 }

@@ -21,6 +21,7 @@ public class DraggableImageView extends androidx.appcompat.widget.AppCompatImage
     private HealthBar healthBar;
     private Klima klima;
 
+
     public DraggableImageView(Context context) {
         super(context);
         init();
@@ -96,7 +97,7 @@ public class DraggableImageView extends androidx.appcompat.widget.AppCompatImage
     }
 
     private void handleDrop() {
-        if (healthBar == null || klima == null) {
+        if (klima == null||healthBar==null) {
             Log.e("DraggableImageView", "HealthBar or Klima is null!");
             return;
         }
@@ -104,6 +105,8 @@ public class DraggableImageView extends androidx.appcompat.widget.AppCompatImage
             klima.changeKlima(25);
         } else if (this.getId() == R.id.TeeMain) {
             klima.changeKlima(-25);
+        } else if (this.getId() == R.id.Wiederbelebung) {
+            healthBar.increaseHealth(20);
         }
     }
 

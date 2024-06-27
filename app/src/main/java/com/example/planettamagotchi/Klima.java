@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Handler;
 import android.widget.ProgressBar;
 import android.content.Context;
+import android.util.Log;
 
 import java.util.Random;
 
@@ -28,13 +29,17 @@ public class Klima {
         // Fortschritt aus SharedPreferences laden
         this.progress = sharedPreferences.getInt(PROGRESS_KEY, 50); // Standardwert ist 50
 
+        Log.d("Klima", "Initialisierter Fortschritt: " + this.progress);
 
         updateProgress();
         startUpdating();
+
     }
 
     private void updateProgress() {
+        Log.d("Klima", "Aktualisieren des Fortschrittsbalkens: " + progress);
         progressBar2.setProgress(progress);
+
     }
 
     private void startUpdating() {
@@ -45,6 +50,7 @@ public class Klima {
                 handler.postDelayed(this, 2000); // Alle 5 Sekunden ausführen
             }
         }, 2000); // Erste Ausführung nach 5 Sekunden
+
     }
 
     private void updateClimate() {
@@ -63,11 +69,7 @@ public class Klima {
             progress = 0;
         }
         updateProgress();
-
-        // Fortschritt in SharedPreferences speichern
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(PROGRESS_KEY, progress);
-        editor.apply();
+        saveProgress();
     }
 
     public int getProgress() {
@@ -81,14 +83,17 @@ public class Klima {
         } else if (this.progress < 0) {
             this.progress = 0;
         }
+        Log.d("Klima", "Änderung des Klimafortschritts: " + amount + ", neuer Fortschritt: " + this.progress);
         updateProgress();
         saveProgress();
     }
 
-    private void saveProgress() {
+    public void saveProgress() {
+        Log.d("Klima", "Speichern des Fortschritts: " + progress);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(PROGRESS_KEY, progress);
-        editor.apply();
+        boolean success = editor.commit(); // Verwenden Sie commit() statt apply(), um sofortige Speicherung sicherzustellen
+        Log.d("Klima", "Speichern erfolgreich: " + success);
     }
 
 
