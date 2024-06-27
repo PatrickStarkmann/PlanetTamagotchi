@@ -74,5 +74,22 @@ public class Klima {
         return this.progress;
     }
 
+    public void changeKlima(int amount) {
+        this.progress += amount;
+        if (this.progress > 100) {
+            this.progress = 100;
+        } else if (this.progress < 0) {
+            this.progress = 0;
+        }
+        updateProgress();
+        saveProgress();
+    }
+
+    private void saveProgress() {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(PROGRESS_KEY, progress);
+        editor.apply();
+    }
+
 
 }

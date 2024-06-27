@@ -20,13 +20,14 @@ public class HealthBar {
         this.progressBar = progressBar;
         this.handler = new Handler();
         this.climateBar = climateBar;
-        //this.sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        this.sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 
         // Fortschritt aus SharedPreferences laden
-        //this.progress = sharedPreferences.getInt(PROGRESS_KEY, 100); // Standardwert ist 100
+        this.progress = sharedPreferences.getInt(PROGRESS_KEY, 100); // Standardwert ist 100
 
         updateProgress();
         startDecreasing();
+
     }
 
     private void updateProgress() {
@@ -92,4 +93,14 @@ public class HealthBar {
         editor.putInt(PROGRESS_KEY, progress);
         editor.apply();
     }
+
+    public void increaseHealth(int amount) {
+        this.progress += amount;
+        if (this.progress > 100) {
+            this.progress = 100;
+        }
+        updateProgress();
+        saveProgress();
+    }
+
 }
