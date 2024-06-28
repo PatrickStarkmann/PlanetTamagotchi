@@ -12,8 +12,8 @@ public class PreferenceManager {
 
     private static final String PREFS_NAME = "SternPrefs";
     private static final String STERN_COUNT_KEY = "SternCount";
-
     private SharedPreferences sharedPreferences;
+
 
     /**
      * Konstruktor für den PreferenceManager.

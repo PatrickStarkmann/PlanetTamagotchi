@@ -32,6 +32,7 @@ public class HealthBar {
     }
 
     private void updateProgress() {
+        Log.d("HealthBar", "Aktueller Fortschritt: " + progress);
         progressBar.setProgress(progress);
     }
 
@@ -90,21 +91,25 @@ public class HealthBar {
     }
 
     public void saveProgress() {
-        Log.d("Klima", "Speichern des Fortschritts: " + progress);
+        Log.d("HealthBar", "Speichern des Fortschritts: " + progress);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(PROGRESS_KEY, progress);
-        boolean success = editor.commit(); // Verwenden Sie commit() statt apply(), um sofortige Speicherung sicherzustellen
-        Log.d("Klima", "Speichern erfolgreich: " + success);
+        boolean success = editor.commit();
+        Log.d("HealthBar", "Speichern erfolgreich: " + success);
     }
 
     public void increaseHealth(int amount) {
+        Log.d("HealthBar", "Erhöhung der Gesundheit um: " + amount);
         this.progress += amount;
         if (this.progress > 100) {
             this.progress = 100;
+        } else if (this.progress < 0) {
+            this.progress = 0;
         }
         updateProgress();
         saveProgress();
     }
-
-
 }
+
+
+

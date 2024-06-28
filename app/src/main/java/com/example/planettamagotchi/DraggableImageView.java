@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import android.widget.RelativeLayout;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 public class DraggableImageView extends androidx.appcompat.widget.AppCompatImageView{
     private PointF lastTouchPoint = new PointF();
@@ -20,6 +21,10 @@ public class DraggableImageView extends androidx.appcompat.widget.AppCompatImage
     private ImageView tamagotchi;
     private HealthBar healthBar;
     private Klima klima;
+
+
+
+
 
 
     public DraggableImageView(Context context) {
@@ -70,10 +75,13 @@ public class DraggableImageView extends androidx.appcompat.widget.AppCompatImage
                     case MotionEvent.ACTION_UP:
                         if (isTouchingTamagotchi()) {
                             handleDrop();
+                            handleDrop2();
                         }
                         setX(initialX);
                         setY(initialY);
                         return true;
+
+
 
                     default:
                         return false;
@@ -97,16 +105,29 @@ public class DraggableImageView extends androidx.appcompat.widget.AppCompatImage
     }
 
     private void handleDrop() {
-        if (klima == null||healthBar==null) {
-            Log.e("DraggableImageView", "HealthBar or Klima is null!");
-            return;
-        }
         if (this.getId() == R.id.ColaMain) {
-            klima.changeKlima(25);
-        } else if (this.getId() == R.id.TeeMain) {
-            klima.changeKlima(-25);
-        } else if (this.getId() == R.id.Wiederbelebung) {
-            healthBar.increaseHealth(20);
+            if (klima != null) {
+                klima.changeKlima(25);
+            }
+        }
+                if (this.getId() == R.id.TeeMain) {
+            if (klima != null) {
+                klima.changeKlima(-25);
+            }
+        }
+
+
+    }
+    private void handleDrop2() {
+         if (this.getId() == R.id.Wiederbelebung) {
+             if (healthBar != null) {
+                 healthBar.increaseHealth(100);
+             }
+         }
+        if (this.getId() == R.id.Kuchen) {
+            if (healthBar != null) {
+                healthBar.increaseHealth(25);
+            }
         }
     }
 
@@ -140,4 +161,6 @@ public class DraggableImageView extends androidx.appcompat.widget.AppCompatImage
     public void setWolke(Wolke wolke) {
         this.wolke = wolke;
     }
+
+
 }

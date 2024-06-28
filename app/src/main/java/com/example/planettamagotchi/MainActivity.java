@@ -34,8 +34,12 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar healthProgressBar;
     private ImageView tamagotchi;
     private DraggableImageView colaMain;
+    private DraggableImageView cakeMain;
     private DraggableImageView teeMain;
     private DraggableImageView wiederbelebung;
+    private Shop shop; // Referenz auf das Shop-Objekt
+
+
 
 
 
@@ -56,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        shop = new Shop(); // Initialisiere das Shop-Objekt
         //Anthony Items
         ImageView tamagotchiImageView = findViewById(R.id.tamagotchi);
         // Initialisiere die Views
@@ -63,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         colaMain = findViewById(R.id.ColaMain);
         teeMain = findViewById(R.id.TeeMain);
         wiederbelebung=findViewById(R.id.Wiederbelebung);
+        cakeMain=findViewById(R.id.Kuchen);
 
         // Initialisiere die ProgressBars
         klimaProgressBar = findViewById(R.id.progressBar2);
@@ -76,11 +82,18 @@ public class MainActivity extends AppCompatActivity {
         colaMain.setTamagotchi(tamagotchi);
         colaMain.setKlima(klima);
 
+
         teeMain.setTamagotchi(tamagotchi);
         teeMain.setKlima(klima);
 
         wiederbelebung.setTamagotchi(tamagotchi);
         wiederbelebung.setHealthBar(healthBar);
+
+        cakeMain.setTamagotchi(tamagotchi);
+        cakeMain.setHealthBar(healthBar);
+
+
+
 
 
 
