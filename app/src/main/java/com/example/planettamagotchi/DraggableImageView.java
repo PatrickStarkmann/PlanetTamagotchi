@@ -23,10 +23,6 @@ public class DraggableImageView extends androidx.appcompat.widget.AppCompatImage
     private Klima klima;
 
 
-
-
-
-
     public DraggableImageView(Context context) {
         super(context);
         init();
