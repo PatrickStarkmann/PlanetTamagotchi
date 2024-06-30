@@ -60,7 +60,9 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        shop = new Shop(); // Initialisiere das Shop-Objekt
+
+
+
         //Anthony Items
         ImageView tamagotchiImageView = findViewById(R.id.tamagotchi);
         // Initialisiere die Views
@@ -73,6 +75,16 @@ public class MainActivity extends AppCompatActivity {
         // Initialisiere die ProgressBars
         klimaProgressBar = findViewById(R.id.progressBar2);
         healthProgressBar = findViewById(R.id.progressBar);
+
+
+
+
+        if (colaMain != null) { // Überprüfe, ob colaMain gefunden wurde
+            colaMain.setShop(shop); // Setze die Shop-Referenz erst jetzt
+        } else {
+            Log.e("MainActivity", "colaMain nicht gefunden!");
+        }
+
 
         // Initialisiere die Klima-Klasse und Health-Klasse
         healthBar = new HealthBar(healthProgressBar, klimaProgressBar, this);
@@ -94,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        shop = Shop.getInstance(); // Singleton-Instanz des Shops verwenden
+        colaMain.setShop(shop);
 
 
 

@@ -21,6 +21,7 @@ public class DraggableImageView extends androidx.appcompat.widget.AppCompatImage
     private ImageView tamagotchi;
     private HealthBar healthBar;
     private Klima klima;
+    private Shop shop;
 
 
     public DraggableImageView(Context context) {
@@ -72,6 +73,8 @@ public class DraggableImageView extends androidx.appcompat.widget.AppCompatImage
                         if (isTouchingTamagotchi()) {
                             handleDrop();
                             handleDrop2();
+                            handleDrop3();
+                            handleDrop4();
                         }
                         setX(initialX);
                         setY(initialY);
@@ -102,11 +105,17 @@ public class DraggableImageView extends androidx.appcompat.widget.AppCompatImage
 
     private void handleDrop() {
         if (this.getId() == R.id.ColaMain) {
-            if (klima != null) {
-                klima.changeKlima(25);
-            }
+           int colaCounter= shop.getColaCounter();
+               if(colaCounter>0){
+                   if (klima != null) {
+                       klima.changeKlima(25);
+                       shop.decrementColaCounter();
+                   }
+               }
         }
-                if (this.getId() == R.id.TeeMain) {
+    }
+    private void handleDrop2() {
+        if (this.getId() == R.id.TeeMain) {
             if (klima != null) {
                 klima.changeKlima(-25);
             }
@@ -114,15 +123,18 @@ public class DraggableImageView extends androidx.appcompat.widget.AppCompatImage
 
 
     }
-    private void handleDrop2() {
+    private void handleDrop3() {
          if (this.getId() == R.id.Wiederbelebung) {
              if (healthBar != null) {
                  healthBar.increaseHealth(100);
              }
          }
+    }
+    private void handleDrop4() {
         if (this.getId() == R.id.Kuchen) {
             if (healthBar != null) {
                 healthBar.increaseHealth(25);
+
             }
         }
     }
@@ -137,6 +149,10 @@ public class DraggableImageView extends androidx.appcompat.widget.AppCompatImage
 
     public void setKlima(Klima klima) {
         this.klima = klima;
+    }
+
+    public void setShop(Shop shop) {
+        this.shop = shop;
     }
 
     private boolean isTouchingWolke() {

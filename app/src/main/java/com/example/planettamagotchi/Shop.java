@@ -43,16 +43,22 @@ public class Shop extends AppCompatActivity {
     public static final String RADIO_COUNTER_KEY = "RadioCounter";
     public static final String CAKE_COUNTER_KEY = "CakeCounter";
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
+        instance = this; // Singleton-Instanz setzen
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.zaehler), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
 
         // Initialize SharedPreferences
         sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
@@ -242,6 +248,7 @@ public class Shop extends AppCompatActivity {
     }
 
     private void saveCounter(String key, int value) {
+        SharedPreferences sharedPreferences = getSharedPreferences("ShopPreferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(key, value);
         editor.apply();
@@ -254,11 +261,46 @@ public class Shop extends AppCompatActivity {
     public void decrementColaCounter() {
         if (colaCounter > 0) {
             colaCounter--;
-            // Aktualisiere die TextView in der Shop-Activity (falls vorhanden)
-            if (colaCounterTextView != null) {
-                colaCounterTextView.setText(String.valueOf(colaCounter));
-            }
-            saveCounter(COLA_COUNTER_KEY, colaCounter); // Speichere den aktualisierten Cola-Counter
+            colaCounterTextView.setText(String.valueOf(colaCounter));
+            saveCounter(COLA_COUNTER_KEY, colaCounter); // Aktualisierten Cola-Counter speichern
         }
+    }
+    public void decrementTeeCounter() {
+        if (teaCounter > 0) {
+            teaCounter--;
+            teaCounterTextView.setText(String.valueOf(teaCounter));
+            saveCounter(TEA_COUNTER_KEY, teaCounter); // Aktualisierten TEA-Counter speichern
+        }
+    }
+    public void decrementEngelCounter() {
+        if (engelCounter > 0) {
+            engelCounter--;
+            engelCounterTextView.setText(String.valueOf(engelCounter));
+            saveCounter(ENGEL_COUNTER_KEY, engelCounter); // Aktualisierten Cola-Counter speichern
+        }
+    }
+    public void decrementKuchenCounter() {
+        if (cakeCounter > 0) {
+            cakeCounter--;
+            cakeCounterTextView.setText(String.valueOf(cakeCounter));
+            saveCounter(CAKE_COUNTER_KEY, cakeCounter); // Aktualisierten Cola-Counter speichern
+        }
+    }
+    public void decrementRadioCounter() {
+        if (radioCounter > 0) {
+            radioCounter--;
+            radioCounterTextView.setText(String.valueOf(radioCounter));
+            saveCounter(RADIO_COUNTER_KEY, radioCounter); // Aktualisierten Cola-Counter speichern
+        }
+    }
+    public static Shop getInstance() {
+        if (instance == null) {
+            instance = new Shop();
+        }
+        return instance;
+    }
+    private int loadCounter(String key){
+        SharedPreferences sharedPreferences = getSharedPreferences("ShopPreferences", MODE_PRIVATE);
+        return sharedPreferences.getInt(key, 0);
     }
 }
