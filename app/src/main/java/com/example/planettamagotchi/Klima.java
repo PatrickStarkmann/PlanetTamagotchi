@@ -55,7 +55,15 @@ public class Klima {
 
     private void updateClimate() {
         Random random = new Random();
-        int change = random.nextBoolean() ? 5 : -5; // Entweder um 5% erhöhen oder um 5% verringern
+        // wenn die Klimagrenzen erreicht werden geht die Klimabar nicht mehr in den Normalbereich
+        int change;
+        if (progress > 70) {
+            change = 5;
+        } else if (progress < 30) {
+            change = -5;
+        } else {
+            change = random.nextBoolean() ? 5 : -5; // Entweder um 5% erhöhen oder um 5% verringern
+        }
 
         // wenn das Tamagotchi tot ist bleibt die Klimabar stehen
         if (healthBar.getProgress() != 0) {
