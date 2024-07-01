@@ -73,8 +73,7 @@ public class DraggableImageView extends androidx.appcompat.widget.AppCompatImage
                         if (isTouchingTamagotchi()) {
                             handleDrop();
                             handleDrop2();
-                            handleDrop3();
-                            handleDrop4();
+
                         }
                         setX(initialX);
                         setY(initialY);
@@ -105,39 +104,49 @@ public class DraggableImageView extends androidx.appcompat.widget.AppCompatImage
 
     private void handleDrop() {
         if (this.getId() == R.id.ColaMain) {
-           int colaCounter= shop.getColaCounter();
+            int colaCounter = Shop.getInstance().getColaCounter(); // Singleton verwenden
                if(colaCounter>0){
                    if (klima != null) {
                        klima.changeKlima(25);
-                       shop.decrementColaCounter();
+                       Shop.getInstance().decrementColaCounter();
                    }
                }
         }
+        if (this.getId() == R.id.TeeMain) {
+            int teaCounter = Shop.getInstance().getTeaCounter();
+            if(teaCounter>0){
+                if (klima != null) {
+                    klima.changeKlima(-25);
+                    Shop.getInstance().decrementTeeCounter();
+                }
+            }
+    }
+
+
+
     }
     private void handleDrop2() {
-        if (this.getId() == R.id.TeeMain) {
-            if (klima != null) {
-                klima.changeKlima(-25);
-            }
-        }
-
-
-    }
-    private void handleDrop3() {
          if (this.getId() == R.id.Wiederbelebung) {
-             if (healthBar != null) {
-                 healthBar.increaseHealth(100);
-             }
-         }
-    }
-    private void handleDrop4() {
-        if (this.getId() == R.id.Kuchen) {
-            if (healthBar != null) {
-                healthBar.increaseHealth(25);
+             int engelCounter = Shop.getInstance().getEngelCounter(); // Singleton verwenden
+             if(engelCounter>0){
 
+                     healthBar.increaseHealth(100);
+                     Shop.getInstance().decrementEngelCounter();
+
+             }
+
+         }
+        if (this.getId() == R.id.Kuchen) {
+            int kuchenCounter = Shop.getInstance().getKuchenCounter(); // Singleton verwenden
+            if(kuchenCounter>0){
+                if (healthBar!= null) {
+                    healthBar.increaseHealth(25);
+                    Shop.getInstance().decrementKuchenCounter();
+                }
             }
         }
     }
+
 
     public void setTamagotchi(ImageView tamagotchi) {
         this.tamagotchi = tamagotchi;

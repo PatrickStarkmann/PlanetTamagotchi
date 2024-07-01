@@ -1,10 +1,13 @@
 package com.example.planettamagotchi;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
+import android.media.MediaPlayer;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -13,10 +16,12 @@ import android.widget.TextView;
 import com.example.planettamagotchi.PreferenceManager;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import android.media.MediaPlayer;
 
 import java.text.BreakIterator;
 
@@ -38,9 +43,9 @@ public class MainActivity extends AppCompatActivity {
     private DraggableImageView teeMain;
     private DraggableImageView wiederbelebung;
     private Shop shop; // Referenz auf das Shop-Objekt
-
-
-
+    private ImageView radioImageView;
+    private MediaPlayer mediaPlayer;
+    private int radioClickCount = 0;
 
 
     //zum speichern des Stern Wertes
@@ -54,13 +59,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+        mediaPlayer = MediaPlayer.create(this, R.raw.trololololl);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.zaehler), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-
 
 
         //Anthony Items
@@ -69,14 +74,12 @@ public class MainActivity extends AppCompatActivity {
         tamagotchi = findViewById(R.id.tamagotchi);
         colaMain = findViewById(R.id.ColaMain);
         teeMain = findViewById(R.id.TeeMain);
-        wiederbelebung=findViewById(R.id.Wiederbelebung);
-        cakeMain=findViewById(R.id.Kuchen);
+        wiederbelebung = findViewById(R.id.Wiederbelebung);
+        cakeMain = findViewById(R.id.Kuchen);
 
         // Initialisiere die ProgressBars
         klimaProgressBar = findViewById(R.id.progressBar2);
         healthProgressBar = findViewById(R.id.progressBar);
-
-
 
 
         if (colaMain != null) { // Überprüfe, ob colaMain gefunden wurde
@@ -101,13 +104,16 @@ public class MainActivity extends AppCompatActivity {
         wiederbelebung.setTamagotchi(tamagotchi);
         wiederbelebung.setHealthBar(healthBar);
 
+
         cakeMain.setTamagotchi(tamagotchi);
         cakeMain.setHealthBar(healthBar);
 
 
-
         shop = Shop.getInstance(); // Singleton-Instanz des Shops verwenden
         colaMain.setShop(shop);
+        teeMain.setShop(shop);
+        wiederbelebung.setShop(shop);
+        cakeMain.setShop(shop);
 
 
 
@@ -130,7 +136,31 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        // OnClickListener für Radio-ImageView
+        radioImageView = findViewById(R.id.RadioMain);
+        radioImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                radioClickCount++;
 
+                if (radioClickCount == 1) {
+                    if (shop.getRadioCounter() > 0) {
+                        if (!mediaPlayer.isPlaying()) {
+                            mediaPlayer.start();
+                            shop.decrementRadioCounter(); // Radio nur beim Starten abziehen
+                            // radioClickCount nicht ändern, bleibt bei 1
+                        }
+                    } else {
+                        showNotEnoughRadiosDialog();
+                        radioClickCount = 0;
+                    }
+                } else if (radioClickCount == 2) { // Jetzt erst auf 2 erhöhen
+                    mediaPlayer.stop();
+                    mediaPlayer.prepareAsync();
+                    radioClickCount = 0; // Zurücksetzen für den nächsten Start
+                }
+            }
+        });
 
 
         TamagotchiTouchListener touchListener = new TamagotchiTouchListener(tamagotchiImageView, R.drawable.tamagotchi_neu, R.drawable.kitzeln, progressBar, progressBar2);
@@ -174,14 +204,12 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
 
 
-
         // Fortschritt der Healthbar speichern
-       // erstmal auskommentiert weil Tamagotchi sonst stirbt
+        // erstmal auskommentiert weil Tamagotchi sonst stirbt
         sharedPreferences = getSharedPreferences(HealthBar.PREFS_NAME, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         editor.putInt(HealthBar.PROGRESS_KEY, healthBar.getProgress());
         editor.apply();
-
 
 
     }
@@ -190,12 +218,14 @@ public class MainActivity extends AppCompatActivity {
         sternCount++;
         sternCounter.setText(String.valueOf(sternCount));
     }
+
     //Julian: Schaden den die Wolke macht aufrufen
-    public void startWolkenSchaden(){
+    public void startWolkenSchaden() {
         this.healthBar.wolkenDecrease();
     }
+
     //Julian: Schaden den die Wolke macht stoppen
-    public void stopWolkenSchaden(){
+    public void stopWolkenSchaden() {
         this.healthBar.stopDecreasing();
     }
     // Methode zum Setzen der Wolke für die DraggableImageView
@@ -213,5 +243,27 @@ public class MainActivity extends AppCompatActivity {
             // Entferne die Bonussterne, um Mehrfacherhöhungen zu vermeiden
             intent.removeExtra("BONUS_STERNE");
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+
+    }
+    private void showNotEnoughRadiosDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Keine Radios mehr!")
+                .setMessage("Du hast keine Radios mehr im Inventar.")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .show();
     }
 }

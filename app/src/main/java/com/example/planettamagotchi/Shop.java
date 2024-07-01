@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -52,6 +51,7 @@ public class Shop extends AppCompatActivity {
         instance = this; // Singleton-Instanz setzen
 
 
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.zaehler), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -60,16 +60,16 @@ public class Shop extends AppCompatActivity {
 
 
 
+
         // Initialize SharedPreferences
         sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 
         // Load saved counters
-        teaCounter = sharedPreferences.getInt(TEA_COUNTER_KEY, 0);
-        colaCounter = sharedPreferences.getInt(COLA_COUNTER_KEY, 0);
-        engelCounter = sharedPreferences.getInt(ENGEL_COUNTER_KEY, 0);
-        radioCounter = sharedPreferences.getInt(RADIO_COUNTER_KEY, 0);
-        cakeCounter = sharedPreferences.getInt(CAKE_COUNTER_KEY, 0);
-
+        teaCounter = loadCounter(TEA_COUNTER_KEY);
+        colaCounter = loadCounter(COLA_COUNTER_KEY);
+        engelCounter = loadCounter(ENGEL_COUNTER_KEY);
+        radioCounter = loadCounter(RADIO_COUNTER_KEY);
+        cakeCounter = loadCounter(CAKE_COUNTER_KEY);
         // Initialize views
         sternCounterTextView = findViewById(R.id.SternCounterShop);
         zuMainButton = findViewById(R.id.ZuMainButton);
@@ -179,7 +179,9 @@ public class Shop extends AppCompatActivity {
                     sternCounterTextView.setText(String.valueOf(sternCount));
                     preferenceManager.saveSternCount(sternCount); // Sternenzähler speichern
                     saveCounter(RADIO_COUNTER_KEY, radioCounter); // Radio-Counter speichern
-                } else {
+                }
+
+                else {
                     showInsufficientStarsDialog();
                 }
             }
@@ -257,6 +259,18 @@ public class Shop extends AppCompatActivity {
     public int getColaCounter() {
         return colaCounter;
     }
+    public int getEngelCounter() {
+        return engelCounter;
+    }
+    public int getKuchenCounter() {
+        return cakeCounter;
+    }
+    public int getTeaCounter() {
+        return teaCounter;
+    }
+    public int getRadioCounter() {
+        return radioCounter;
+    }
 
     public void decrementColaCounter() {
         if (colaCounter > 0) {
@@ -303,4 +317,7 @@ public class Shop extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("ShopPreferences", MODE_PRIVATE);
         return sharedPreferences.getInt(key, 0);
     }
+
+
+
 }
