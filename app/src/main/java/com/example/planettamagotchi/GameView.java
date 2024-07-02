@@ -25,7 +25,7 @@ public class GameView extends View {
     private Paint playerPaint;
 
     private ArrayList<Meteor> meteors;
-    private int meteorSpeed = 15; // Meteor-Geschwindigkeit anpassen
+    private int meteorSpeed = 45; // Meteor-Geschwindigkeit erhöht
     private Bitmap tamagotchiBitmap; // Bitmap für das Tamagotchi
     private Bitmap meteorBitmap; // Bitmap für den Meteor
     private Bitmap backgroundBitmap; // Bitmap für den Hintergrund
