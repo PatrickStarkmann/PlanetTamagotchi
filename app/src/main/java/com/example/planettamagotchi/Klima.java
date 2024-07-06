@@ -94,6 +94,7 @@ public class Klima {
         Log.d("Klima", "Änderung des Klimafortschritts: " + amount + ", neuer Fortschritt: " + this.progress);
         updateProgress();
         saveProgress();
+
     }
 
     public void saveProgress() {
