@@ -139,7 +139,7 @@ public class DraggableImageView extends androidx.appcompat.widget.AppCompatImage
         if (this.getId() == R.id.Kuchen) {
             int kuchenCounter = Shop.getInstance().getKuchenCounter(); // Singleton verwenden
             if(kuchenCounter>0){
-                if (healthBar!= null) {
+                if (healthBar!= null && healthBar.getProgress()>0) {
                     healthBar.increaseHealth(25);
                     Shop.getInstance().decrementKuchenCounter();
                 }

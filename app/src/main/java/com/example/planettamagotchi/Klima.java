@@ -77,7 +77,7 @@ public class Klima {
             progress = 0;
         }
         updateProgress();
-        saveProgress();
+
     }
 
     public int getProgress() {
