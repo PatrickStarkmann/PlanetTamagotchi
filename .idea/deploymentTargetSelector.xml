@@ -4,10 +4,10 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-07-01T23:14:49.072028Z">
+        <DropdownSelection timestamp="2024-07-06T12:25:29.090509900Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=/Users/anthonynguyen/.android/avd/Tamagotchi_Tablet_API_30.avd" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\Patrick\.android\avd\letztes.avd" />
             </handle>
           </Target>
         </DropdownSelection>

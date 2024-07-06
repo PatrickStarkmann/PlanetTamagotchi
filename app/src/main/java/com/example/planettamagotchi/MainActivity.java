@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        //Touchlistener für das Kitzeln
         TamagotchiTouchListener touchListener = new TamagotchiTouchListener(tamagotchiImageView, R.drawable.tamagotchi_neu, R.drawable.kitzeln, progressBar, progressBar2);
         tamagotchiImageView.setOnTouchListener(touchListener);
         // Tamagotchi Verhalten von Patrick

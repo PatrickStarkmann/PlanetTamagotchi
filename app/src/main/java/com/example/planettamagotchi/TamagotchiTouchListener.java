@@ -17,8 +17,16 @@ public class TamagotchiTouchListener implements View.OnTouchListener {
     private ProgressBar healthBar;
     private ProgressBar climateBar;
 
-    
 
+    /**
+     * Konstruktor
+     *
+     * @param imageView    Die ImageView, die das GIF anzeigt
+     * @param originalGif  Das originale Gif
+     * @param alternateGif Das alternative Gif
+     * @param healthBar    Die Fortschrittsanzeige für die Healthbar
+     * @param climateBar   Die Fortschrittsanzeige für die Klimabar
+     */
     public TamagotchiTouchListener(ImageView imageView, int originalGif, int alternateGif, ProgressBar healthBar, ProgressBar climateBar) {
         this.imageView = imageView;
         this.originalGif = originalGif;
@@ -27,6 +35,13 @@ public class TamagotchiTouchListener implements View.OnTouchListener {
         this.climateBar = climateBar;
     }
 
+    /**
+     * Methode wird aufgerufen, wenn eine Berührung auf der View erkannt wird
+     *
+     * @param v     Die View, die gestreichelt wird
+     * @param event Das MotionEvent für die Berührung
+     * @return true, wenn geswiped wurde
+     */
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         switch (event.getAction()) {
@@ -40,18 +55,21 @@ public class TamagotchiTouchListener implements View.OnTouchListener {
                 float deltaX = endX - startX;
 
                 // Wenn die Distanz groß genug ist, erhöhe die Swipe-Zähler-Variable
-                if (Math.abs(deltaX) > 200) { // Hier kannst du die Schwelle für eine Swipe-Bewegung anpassen
+                if (Math.abs(deltaX) > 200) {
                     swipeCount++;
-                    // Führe hier weitere Aktionen aus, die du im Zusammenhang mit dem Swipe durchführen möchtest
+                    // Printen zum testen
                     System.out.println("Es wurde geswiped yuhu" + "SwipeCount:" + swipeCount);
                     if ((healthBar.getProgress() >= 30) & (climateBar.getProgress() > 30 & climateBar.getProgress() < 70))
-                        changeGifTemporarily(); // ändert Tamagotchi
+                        changeGifTemporarily(); // ändert Tamagotchi nur wenn es dem Tamagotchi gut geht
                 }
                 break;
         }
         return true;
     }
 
+    /**
+     * Ändert das GIF temporär und setzt es nach einer Verzögerung wieder auf das originale Gif zurück
+     */
     private void changeGifTemporarily() {
         // Ändern des GIFs
         imageView.setImageResource(alternateGif);
@@ -65,8 +83,5 @@ public class TamagotchiTouchListener implements View.OnTouchListener {
         }, 1000); // 1000 Millisekunden = 1 Sekunde Verzögerung
     }
 
-    public int getSwipeCount() {
-        return swipeCount;
-    }
 }
 

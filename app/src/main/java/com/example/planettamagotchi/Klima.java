@@ -58,11 +58,11 @@ public class Klima {
         // wenn die Klimagrenzen erreicht werden geht die Klimabar nicht mehr in den Normalbereich
         int change;
         if (progress > 70) {
-            change = 5;
+            change = 2;
         } else if (progress < 30) {
-            change = -5;
+            change = -2;
         } else {
-            change = random.nextBoolean() ? 5 : -5; // Entweder um 5% erhöhen oder um 5% verringern
+            change = random.nextBoolean() ? 2 : -2; // Entweder um 5% erhöhen oder um 5% verringern
         }
 
         // wenn das Tamagotchi tot ist bleibt die Klimabar stehen
@@ -77,7 +77,6 @@ public class Klima {
             progress = 0;
         }
         updateProgress();
-
     }
 
     public int getProgress() {
@@ -94,7 +93,6 @@ public class Klima {
         Log.d("Klima", "Änderung des Klimafortschritts: " + amount + ", neuer Fortschritt: " + this.progress);
         updateProgress();
         saveProgress();
-
     }
 
     public void saveProgress() {

@@ -146,8 +146,8 @@ public class Shop extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int sternCount = Integer.parseInt(sternCounterTextView.getText().toString());
-                if (sternCount >= 5) {
-                    sternCount -= 5;
+                if (sternCount >= 100) {
+                    sternCount -= 100;
                     engelCounter++;
                     engelCounterTextView.setText(String.valueOf(engelCounter));
                     sternCounterTextView.setText(String.valueOf(sternCount));
@@ -172,8 +172,8 @@ public class Shop extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int sternCount = Integer.parseInt(sternCounterTextView.getText().toString());
-                if (sternCount >= 5) {
-                    sternCount -= 5;
+                if (sternCount >= 25) {
+                    sternCount -= 25;
                     radioCounter++;
                     radioCounterTextView.setText(String.valueOf(radioCounter));
                     sternCounterTextView.setText(String.valueOf(sternCount));

@@ -12,6 +12,13 @@ public class Tamagotchi {
     private ImageView tamagotchiImageView;
     private Handler handler;
 
+    /**
+     * Konstruktor
+     *
+     * @param healthBar Die Fortschrittsanzeige für das Leben
+     * @param climateBar Die Fortschrittsanzeige für das Klima
+     * @param tamagotchiImageView Das Bild des Tamagotchis
+     */
     public Tamagotchi(ProgressBar healthBar, ProgressBar climateBar, ImageView tamagotchiImageView) {
         this.healthBar = healthBar;
         this.climateBar = climateBar;
@@ -22,6 +29,10 @@ public class Tamagotchi {
         startTamagotchi();
     }
 
+    /**
+     * Aktualisiert den Zustand des Tamagotchi basierend auf der Gesundheit und dem Klima
+     * Ändert das Bild des Tamagotchi abhängig vom aktuellen Zustand
+     */
     private void updateTamagotchiState() {
         if (healthBar.getProgress() == 0) {
             tamagotchiImageView.setImageResource(R.drawable.tot);
@@ -36,6 +47,10 @@ public class Tamagotchi {
         }
     }
 
+    /**
+     * Startet das Tamagotchi
+     * Die Methode wird alle 2 Sekunden aufgerufen
+     */
     private void startTamagotchi() {
         handler.postDelayed(new Runnable() {
             @Override
