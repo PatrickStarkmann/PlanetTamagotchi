@@ -115,14 +115,14 @@
 
     <TextView
         android:id="@+id/SternCounter"
-        android:layout_width="97dp"
-        android:layout_height="76dp"
+        android:layout_width="84dp"
+        android:layout_height="67dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="620dp"
-        android:layout_marginEnd="-36dp"
+        android:layout_marginTop="617dp"
+        android:layout_marginEnd="-21dp"
         android:text="0"
-        android:textSize="40sp" />
+        android:textSize="30sp" />
 
     <com.example.planettamagotchi.DraggableImageView
         android:id="@+id/foehn"
