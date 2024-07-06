@@ -13,6 +13,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+/**
+ * Die Klasse Shop verwaltet die Logik und die Benutzeroberfläche für den Shop-Bereich der Anwendung.
+ * Sie ermöglicht es den Benutzern, Gegenstände mit Sternen zu kaufen und den Fortschritt der Käufe zu speichern.
+ */
 public class Shop extends AppCompatActivity {
     private ImageView zuMainButton;
     private ImageView colaImageView;
@@ -32,7 +36,7 @@ public class Shop extends AppCompatActivity {
     private int teaCounter = 0;
     private int engelCounter = 0;
     private int radioCounter = 0;
-    private int cakeCounter=0;
+    private int cakeCounter = 0;
     private PreferenceManager preferenceManager;
     private SharedPreferences sharedPreferences;
     public static final String PREFS_NAME = "CounterPrefs";
@@ -42,15 +46,11 @@ public class Shop extends AppCompatActivity {
     public static final String RADIO_COUNTER_KEY = "RadioCounter";
     public static final String CAKE_COUNTER_KEY = "CakeCounter";
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
         instance = this; // Singleton-Instanz setzen
-
-
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.zaehler), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -58,19 +58,17 @@ public class Shop extends AppCompatActivity {
             return insets;
         });
 
-
-
-
-        // Initialize SharedPreferences
+        // Initialisieren von SharedPreferences
         sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 
-        // Load saved counters
+        // Gespeicherte Zähler laden
         teaCounter = loadCounter(TEA_COUNTER_KEY);
         colaCounter = loadCounter(COLA_COUNTER_KEY);
         engelCounter = loadCounter(ENGEL_COUNTER_KEY);
         radioCounter = loadCounter(RADIO_COUNTER_KEY);
         cakeCounter = loadCounter(CAKE_COUNTER_KEY);
-        // Initialize views
+
+        // Initialisieren der Views
         sternCounterTextView = findViewById(R.id.SternCounterShop);
         zuMainButton = findViewById(R.id.ZuMainButton);
         colaImageView = findViewById(R.id.imageView7);
@@ -82,17 +80,17 @@ public class Shop extends AppCompatActivity {
         radioCounterTextView = findViewById(R.id.textView3);
         teaImageView = findViewById(R.id.imageView2);
         teaCounterTextView = findViewById(R.id.textView);
-        cakeImageView= findViewById(R.id.imageView10);
+        cakeImageView = findViewById(R.id.imageView10);
         cakeCounterTextView = findViewById(R.id.textView5);
 
-        // Set initial counter values
+        // Initiale Zählerwerte setzen
         colaCounterTextView.setText(String.valueOf(colaCounter));
         teaCounterTextView.setText(String.valueOf(teaCounter));
         engelCounterTextView.setText(String.valueOf(engelCounter));
         radioCounterTextView.setText(String.valueOf(radioCounter));
         cakeCounterTextView.setText(String.valueOf(cakeCounter));
 
-        // Load SternCounter value
+        // SternCounter-Wert laden
         preferenceManager = new PreferenceManager(this);
         int sternCount = preferenceManager.loadSternCount();
         sternCounterTextView.setText(String.valueOf(sternCount));
@@ -123,6 +121,7 @@ public class Shop extends AppCompatActivity {
                 }
             }
         });
+
         // OnClickListener für Cake-ImageView
         cakeImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,9 +178,7 @@ public class Shop extends AppCompatActivity {
                     sternCounterTextView.setText(String.valueOf(sternCount));
                     preferenceManager.saveSternCount(sternCount); // Sternenzähler speichern
                     saveCounter(RADIO_COUNTER_KEY, radioCounter); // Radio-Counter speichern
-                }
-
-                else {
+                } else {
                     showInsufficientStarsDialog();
                 }
             }
@@ -206,6 +203,9 @@ public class Shop extends AppCompatActivity {
         });
     }
 
+    /**
+     * Zeigt einen Dialog mit den Preisen der Artikel im Shop.
+     */
     private void showPreiseDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("ABGESPACEDE PREISE");
@@ -236,6 +236,9 @@ public class Shop extends AppCompatActivity {
         dialog.show();
     }
 
+    /**
+     * Zeigt einen Dialog an, wenn der Benutzer nicht genügend Sterne hat, um einen Artikel zu kaufen.
+     */
     private void showInsufficientStarsDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Nicht genügend Sterne")
@@ -249,6 +252,11 @@ public class Shop extends AppCompatActivity {
                 .show();
     }
 
+    /**
+     * Speichert den Wert eines Zählers in SharedPreferences.
+     * @param key Der Schlüssel, unter dem der Zählerwert gespeichert wird.
+     * @param value Der zu speichernde Wert des Zählers.
+     */
     private void saveCounter(String key, int value) {
         SharedPreferences sharedPreferences = getSharedPreferences("ShopPreferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -256,22 +264,28 @@ public class Shop extends AppCompatActivity {
         editor.apply();
     }
 
+    // Getter-Methoden für die Zähler
     public int getColaCounter() {
         return colaCounter;
     }
+
     public int getEngelCounter() {
         return engelCounter;
     }
+
     public int getKuchenCounter() {
         return cakeCounter;
     }
+
     public int getTeaCounter() {
         return teaCounter;
     }
+
     public int getRadioCounter() {
         return radioCounter;
     }
 
+    // Methoden zum Verringern der Zähler
     public void decrementColaCounter() {
         if (colaCounter > 0) {
             colaCounter--;
@@ -279,6 +293,7 @@ public class Shop extends AppCompatActivity {
             saveCounter(COLA_COUNTER_KEY, colaCounter); // Aktualisierten Cola-Counter speichern
         }
     }
+
     public void decrementTeeCounter() {
         if (teaCounter > 0) {
             teaCounter--;
@@ -286,6 +301,7 @@ public class Shop extends AppCompatActivity {
             saveCounter(TEA_COUNTER_KEY, teaCounter); // Aktualisierten TEA-Counter speichern
         }
     }
+
     public void decrementEngelCounter() {
         if (engelCounter > 0) {
             engelCounter--;
@@ -293,6 +309,7 @@ public class Shop extends AppCompatActivity {
             saveCounter(ENGEL_COUNTER_KEY, engelCounter); // Aktualisierten Cola-Counter speichern
         }
     }
+
     public void decrementKuchenCounter() {
         if (cakeCounter > 0) {
             cakeCounter--;
@@ -300,6 +317,7 @@ public class Shop extends AppCompatActivity {
             saveCounter(CAKE_COUNTER_KEY, cakeCounter); // Aktualisierten Cola-Counter speichern
         }
     }
+
     public void decrementRadioCounter() {
         if (radioCounter > 0) {
             radioCounter--;
@@ -307,17 +325,25 @@ public class Shop extends AppCompatActivity {
             saveCounter(RADIO_COUNTER_KEY, radioCounter); // Aktualisierten Cola-Counter speichern
         }
     }
+
+    /**
+     * Gibt die Singleton-Instanz der Shop-Klasse zurück.
+     * @return Die Singleton-Instanz der Shop-Klasse.
+     */
     public static Shop getInstance() {
         if (instance == null) {
             instance = new Shop();
         }
         return instance;
     }
-    private int loadCounter(String key){
+
+    /**
+     * Lädt den Wert eines Zählers aus SharedPreferences.
+     * @param key Der Schlüssel, unter dem der Zählerwert gespeichert ist.
+     * @return Der geladene Wert des Zählers.
+     */
+    private int loadCounter(String key) {
         SharedPreferences sharedPreferences = getSharedPreferences("ShopPreferences", MODE_PRIVATE);
         return sharedPreferences.getInt(key, 0);
     }
-
-
-
 }

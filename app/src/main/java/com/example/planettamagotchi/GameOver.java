@@ -19,16 +19,7 @@ public class GameOver extends AppCompatActivity {
 
         int bonusSterne = getIntent().getIntExtra("BONUS_STERNE", 0);
 
-        ImageView restartButton = findViewById(R.id.restartButton);
-        restartButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Neustart der GameActivity
-                Intent intent = new Intent(GameOver.this, GameActivity.class);
-                startActivity(intent);
-                finish(); // Beendet die aktuelle Activity
-            }
-        });
+        
 
         ImageView tamagotchiButton = findViewById(R.id.tamagotchiButton);
         tamagotchiButton.setOnClickListener(new View.OnClickListener() {
